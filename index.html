@@ -466,7 +466,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="cta-section">
     <h2 data-en="Not just a power bank.&lt;br&gt;&lt;em&gt;Your AI co-pilot.&lt;/em&gt;" data-zh="不只是充电宝。&lt;br&gt;&lt;em&gt;你的 AI 搭档。&lt;/em&gt;">Not just a power bank.<br><em>Your AI co-pilot.</em></h2>
     <p data-en="The first device that merges portable charging with a dedicated AI Agent terminal — purpose-built for the Vibe Coding generation." data-zh="全球首款将移动充电与专属 AI Agent 终端融为一体的设备 — 为 Vibe Coding 一代而生。">The first device that merges portable charging with a dedicated AI Agent terminal — purpose-built for the Vibe Coding generation.</p>
-    <a href="https://joy-inside.jd.com/activity/" class="btn-ghost" target="_blank" data-en="Learn More" data-zh="了解更多">Learn More</a>
+    <button class="btn-ghost btn-waitlist-trigger" data-en="Join the Beta Waitlist" data-zh="加入内测等待列表">Join the Beta Waitlist</button>
   </div>
 </section>
 
@@ -491,8 +491,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="modal">
     <button class="modal-close" id="closeModal">&times;</button>
     <div id="modalForm">
-      <h3 data-en="Join the Waiting List" data-zh="加入等待列表">Join the Waiting List</h3>
-      <p data-en="Be the first to get Power Up when it launches. We'll notify you the moment it's available." data-zh="成为第一批拥有 Power Up 的人。产品上线时我们会第一时间通知你。">Be the first to get Power Up when it launches. We'll notify you the moment it's available.</p>
+      <h3 data-en="Join the Beta Waitlist" data-zh="加入内测等待列表">Join the Beta Waitlist</h3>
+      <p data-en="Be among the first to experience Power Up. When the closed beta opens before public launch, we'll invite you in — priority access, no waiting." data-zh="抢先成为 Power Up 的首批体验者。上线前的封闭内测开启时，我们会第一时间邀请你加入 —— 优先体验，无需排队。">Be among the first to experience Power Up. When the closed beta opens before public launch, we'll invite you in — priority access, no waiting.</p>
       <form class="modal-form" id="waitlistForm">
         <input type="text" id="userName" required data-en-placeholder="Your name" data-zh-placeholder="你的名字" placeholder="Your name">
         <input type="email" id="userEmail" required data-en-placeholder="Email address" data-zh-placeholder="邮箱地址" placeholder="Email address">
@@ -501,8 +501,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
     </div>
     <div class="modal-success" id="modalSuccess">
       <span class="check">&#10003;</span>
-      <h4 data-en="You're on the list!" data-zh="你已成功加入！">You're on the list!</h4>
-      <p data-en="We'll reach out when Power Up is ready. Thank you for your interest." data-zh="Power Up 准备就绪时我们会联系你。感谢你的关注。">We'll reach out when Power Up is ready. Thank you for your interest.</p>
+      <h4 data-en="You're on the beta list!" data-zh="内测名额已锁定！">You're on the beta list!</h4>
+      <p data-en="We'll reach out the moment closed beta opens — you'll be among the very first to get hands on Power Up." data-zh="内测通道开启时我们会第一时间联系你 —— 你将成为最早拿到 Power Up 的人之一。">We'll reach out the moment closed beta opens — you'll be among the very first to get hands on Power Up.</p>
     </div>
   </div>
 </div>
@@ -548,6 +548,7 @@ revealElements.forEach(el => {
 // ===== WAITLIST MODAL =====
 const modal = document.getElementById('waitlistModal');
 const openBtn = document.getElementById('openWaitlist');
+const waitlistTriggers = document.querySelectorAll('.btn-waitlist-trigger');
 const closeBtn = document.getElementById('closeModal');
 const form = document.getElementById('waitlistForm');
 const countEl = document.getElementById('waitlistCount');
@@ -558,11 +559,14 @@ const modalSuccess = document.getElementById('modalSuccess');
 let waitlistNum = parseInt(localStorage.getItem('powerup_waitlist_count') || '189');
 countEl.textContent = waitlistNum;
 
-openBtn.addEventListener('click', () => {
+function openWaitlistModal() {
   modal.classList.add('show');
   modalFormDiv.style.display = 'block';
   modalSuccess.style.display = 'none';
-});
+}
+
+openBtn.addEventListener('click', openWaitlistModal);
+waitlistTriggers.forEach(btn => btn.addEventListener('click', openWaitlistModal));
 closeBtn.addEventListener('click', () => modal.classList.remove('show'));
 modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
 
