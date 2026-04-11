@@ -329,9 +329,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 .persona-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 45%,transparent 50%,rgba(10,12,20,0.95) 100%);pointer-events:none}
 .persona-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,12,20,0.6) 100%);pointer-events:none;z-index:1}
 
-/* Identity quote floating above the photo */
-.persona-quote{position:absolute;top:10%;left:6%;right:6%;text-align:left;font-family:var(--serif);font-style:italic;font-size:1.18rem;color:rgba(255,255,255,0.98);line-height:1.35;letter-spacing:-.3px;pointer-events:none;z-index:2;text-shadow:0 2px 20px rgba(0,0,0,0.9)}
-.persona-quote small{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;color:rgba(255,255,255,0.72);letter-spacing:1.8px;margin-top:10px;text-transform:uppercase;font-weight:500}
+/* Identity quote was removed — hide just in case any markup remains */
+.persona-quote{display:none}
 
 /* Layer badge overlaid at the bottom of the photo */
 .persona-badge{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.8)}
@@ -594,10 +593,6 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <div class="persona-row active" data-layer="1">
         <div class="persona-visual">
           <img src="images/persona_01_gen_z.webp" alt="Gen Z Indie Builder using POWER UP" loading="lazy">
-          <div class="persona-quote">
-            <span data-en="&amp;ldquo;I ship an app&lt;br&gt;every week.&amp;rdquo;" data-zh="&amp;ldquo;我一周&lt;br&gt;发一个 app。&amp;rdquo;">&ldquo;I ship an app<br>every week.&rdquo;</span>
-            <small data-en="Gen Z · Indie Hacker" data-zh="Z 世代 · 独立开发者">Gen Z · Indie Hacker</small>
-          </div>
           <div class="persona-badge">
             <span class="layer-tag" data-en="Layer 01 · The Core" data-zh="Layer 01 · 核心圈">Layer 01 · The Core</span>
             <span class="layer-name" data-en="Gen Z Indie Builders" data-zh="Z 世代独立开发者">Gen Z Indie Builders</span>
@@ -635,10 +630,6 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <div class="persona-row" data-layer="2">
         <div class="persona-visual">
           <img src="images/persona_02_knowledge.webp" alt="Knowledge-class professional using POWER UP" loading="lazy">
-          <div class="persona-quote">
-            <span data-en="&amp;ldquo;I just want to&lt;br&gt;automate my own work.&amp;rdquo;" data-zh="&amp;ldquo;我只想自动化&lt;br&gt;自己的工作。&amp;rdquo;">&ldquo;I just want to<br>automate my own work.&rdquo;</span>
-            <small data-en="26-40 · Knowledge Pros" data-zh="26-40 · 高知中产">26-40 · Knowledge Pros</small>
-          </div>
           <div class="persona-badge">
             <span class="layer-tag" data-en="Layer 02 · Expanding" data-zh="Layer 02 · 扩张圈">Layer 02 · Expanding</span>
             <span class="layer-name" data-en="Knowledge-class Pros" data-zh="高知中产专业人士">Knowledge-class Pros</span>
@@ -676,10 +667,6 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <div class="persona-row" data-layer="3">
         <div class="persona-visual">
           <img src="images/persona_03_newcomer.webp" alt="Zero-background newcomer discovering POWER UP" loading="lazy">
-          <div class="persona-quote">
-            <span data-en="&amp;ldquo;I want to build&lt;br&gt;my own app too.&amp;rdquo;" data-zh="&amp;ldquo;我也想做&lt;br&gt;一个自己的 app。&amp;rdquo;">&ldquo;I want to build<br>my own app too.&rdquo;</span>
-            <small data-en="Newcomers · Zero Background" data-zh="入门新手 · 零基础">Newcomers · Zero Background</small>
-          </div>
           <div class="persona-badge">
             <span class="layer-tag" data-en="Layer 03 · Newcomers" data-zh="Layer 03 · 入门圈">Layer 03 · Newcomers</span>
             <span class="layer-name" data-en="Zero-background Starters" data-zh="零基础入门新手">Zero-background Starters</span>
