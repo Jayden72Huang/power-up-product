@@ -55,7 +55,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-brand svg{width:24px;height:24px}
 .nav-brand span{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--white);letter-spacing:2px;text-transform:uppercase}
-.nav-links{display:flex;gap:40px}
+.nav-links{display:flex;gap:32px}
 .nav-links a{color:var(--gray-400);font-size:.85rem;font-weight:400;text-decoration:none;letter-spacing:.5px;transition:color .3s;position:relative}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-links a.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:1px;background:var(--white)}
@@ -217,6 +217,148 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .nav-links{gap:20px}
   .nav-links a{font-size:.75rem}
 }
+
+/* ===== AUDIENCE SECTION ===== */
+.audience-wrap{display:flex;flex-direction:column;gap:72px;max-width:1320px;margin:0 auto;width:100%}
+.audience-head{text-align:center;max-width:720px;margin:0 auto}
+.audience-head .detail-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px;display:inline-flex;align-items:center;gap:12px}
+.audience-head .detail-tag::before,.audience-head .detail-tag::after{content:'';display:inline-block;width:24px;height:1px;background:rgba(255,255,255,0.25)}
+.audience-head h2{font-family:var(--serif);font-size:2.6rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:22px;line-height:1.15}
+.audience-head p{color:var(--gray-200);font-size:.95rem;font-weight:300;line-height:1.8;max-width:640px;margin:0 auto}
+.audience-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:28px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);max-width:1100px;margin:0 auto;width:100%}
+.audience-stats .stat-item{display:flex;flex-direction:column;gap:8px;text-align:center;padding:0 16px;border-right:1px solid rgba(255,255,255,0.04)}
+.audience-stats .stat-item:last-child{border-right:none}
+.audience-stats .stat-num{font-family:var(--mono);font-size:1.85rem;font-weight:300;color:var(--white);letter-spacing:-1px;line-height:1}
+.audience-stats .stat-label{font-size:.7rem;color:var(--gray-500);letter-spacing:.3px;line-height:1.45}
+
+/* Persona Tab switcher */
+.persona-tabs{display:flex;justify-content:center;gap:0;margin:0 auto;padding:6px;border:1px solid var(--glass-border);border-radius:60px;background:var(--glass);backdrop-filter:blur(20px);width:fit-content}
+.persona-tab{padding:12px 28px;border:none;background:transparent;color:var(--gray-500);font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all .4s;white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.3}
+.persona-tab .tab-num{font-family:var(--mono);font-size:.54rem;letter-spacing:2px;color:rgba(255,255,255,0.32);transition:color .4s}
+.persona-tab .tab-name{font-family:var(--serif);font-style:italic;font-size:.95rem;font-weight:400;text-transform:none;letter-spacing:-.2px;color:var(--gray-400);transition:color .4s}
+.persona-tab.active{background:rgba(255,255,255,0.08);box-shadow:0 0 0 1px rgba(255,255,255,0.12) inset}
+.persona-tab.active .tab-num{color:rgba(255,255,255,0.6)}
+.persona-tab.active .tab-name{color:var(--white)}
+.persona-tab:hover:not(.active) .tab-name{color:var(--gray-200)}
+
+/* 3 personas: left-right layout, panel switcher */
+.persona-stack{position:relative;max-width:1160px;margin:0 auto;width:100%;min-height:560px}
+.persona-row{display:none;grid-template-columns:minmax(340px,420px) 1fr;gap:72px;align-items:center;padding:24px 0;position:relative;animation:personaFade .5s ease}
+.persona-row.active{display:grid}
+@keyframes personaFade{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* LEFT: Persona silhouette */
+.persona-visual{position:relative;width:100%;max-width:420px;height:500px;margin:0 auto}
+.persona-visual svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.persona-visual svg .outline{fill:none;stroke:rgba(255,255,255,0.24);stroke-width:1.5;stroke-linejoin:round}
+.persona-visual svg .line{stroke:rgba(255,255,255,0.14);stroke-width:1}
+.persona-visual svg .accent{fill:rgba(255,255,255,0.2)}
+
+/* Identity quote floating inside the head */
+.persona-quote{position:absolute;top:24%;left:50%;transform:translate(-50%,-50%);text-align:center;width:72%;font-family:var(--serif);font-style:italic;font-size:1.12rem;color:rgba(255,255,255,0.96);line-height:1.35;letter-spacing:-.3px;pointer-events:none}
+.persona-quote small{display:block;font-family:var(--mono);font-style:normal;font-size:.58rem;color:rgba(255,255,255,0.45);letter-spacing:1.8px;margin-top:12px;text-transform:uppercase}
+
+/* Layer badge below the silhouette */
+.persona-badge{position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;white-space:nowrap}
+.persona-badge .layer-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.32)}
+.persona-badge .layer-name{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--gray-100);font-weight:400}
+
+/* RIGHT: Persona info */
+.persona-info{padding:8px 0}
+.persona-info .info-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.persona-info .info-head .num{font-family:var(--mono);font-size:.62rem;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase;padding:6px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:50px;white-space:nowrap}
+.persona-info .info-head .line-h{flex:1;height:1px;background:rgba(255,255,255,0.08)}
+.persona-info h3{font-family:var(--serif);font-size:2rem;font-style:italic;font-weight:400;color:var(--white);margin-bottom:8px;line-height:1.15}
+.persona-info .sub-name{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;display:block}
+
+.persona-block{margin-bottom:22px}
+.persona-block-label{font-family:var(--mono);font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.persona-block-label::before{content:'';width:18px;height:1px;background:rgba(255,255,255,0.25);display:inline-block}
+.persona-block-label.pain{color:rgba(255,107,107,0.7)}
+.persona-block-label.pain::before{background:rgba(255,107,107,0.5)}
+.persona-block ul{list-style:none;display:flex;flex-direction:column;gap:10px;padding:0}
+.persona-block li{font-size:.86rem;color:var(--gray-300);line-height:1.55;display:flex;align-items:flex-start;gap:12px;padding:2px 0;font-weight:300}
+.persona-block li::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;margin-top:9px;background:rgba(255,255,255,0.35);flex-shrink:0}
+.persona-block li strong{color:var(--gray-100);font-weight:500}
+
+/* Pain block: each item = bold headline + tiny sub caption */
+.persona-block.pain-block ul{gap:16px}
+.persona-block.pain-block li{font-size:1.1rem;color:#ff8a8a;font-weight:500;line-height:1.3;letter-spacing:-.2px;padding:0;font-family:var(--serif);font-style:italic}
+.persona-block.pain-block li::before{width:6px;height:6px;margin-top:10px;background:#ff6b6b;box-shadow:0 0 12px rgba(255,107,107,0.5)}
+.persona-block.pain-block li em{display:block;font-style:normal;font-family:var(--sans);font-size:.72rem;color:rgba(255,255,255,0.4);font-weight:300;margin-top:5px;letter-spacing:.2px;line-height:1.5}
+
+.persona-demo{font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,0.32);letter-spacing:.8px;padding-top:18px;margin-top:8px;border-top:1px dashed rgba(255,255,255,0.06);line-height:1.65;text-transform:uppercase}
+
+/* Closing narrative — the unifying sentence */
+.audience-closing{text-align:center;max-width:760px;margin:0 auto;padding:40px 32px 0;border-top:1px dashed rgba(255,255,255,0.08);position:relative}
+.audience-closing::before{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--bg);border:1px solid rgba(255,255,255,0.15)}
+.audience-closing p{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--gray-100);line-height:1.55;font-weight:400}
+.audience-closing p .accent{color:var(--white);border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px}
+.audience-closing small{display:block;margin-top:14px;font-family:var(--mono);font-size:.68rem;color:var(--gray-500);letter-spacing:2px;text-transform:uppercase}
+
+/* ===== PAIN POINTS SECTION ===== */
+.pain-section{max-width:1280px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:56px}
+.pain-header{text-align:center;max-width:720px;margin:0 auto}
+.pain-header .detail-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px;display:inline-flex;align-items:center;gap:12px}
+.pain-header .detail-tag::before,.pain-header .detail-tag::after{content:'';display:inline-block;width:24px;height:1px;background:rgba(255,255,255,0.25)}
+.pain-header h2{font-family:var(--serif);font-size:2.6rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:20px;line-height:1.15}
+.pain-header p{color:var(--gray-200);font-size:.95rem;font-weight:300;line-height:1.8;max-width:640px;margin:0 auto}
+.pain-core-label,.pain-sub-label{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:3.5px;color:rgba(255,255,255,0.6);text-transform:uppercase;font-weight:500}
+.pain-core-label::before,.pain-core-label::after,.pain-sub-label::before,.pain-sub-label::after{content:'';display:inline-block;width:56px;height:1px;background:rgba(255,255,255,0.22);vertical-align:middle;margin:0 18px}
+.pain-core-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:-20px}
+.pain-core-card{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:14px;padding:32px 28px;transition:all .4s;position:relative;display:flex;flex-direction:column;min-height:420px;overflow:hidden}
+.pain-core-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,107,0.05),transparent 55%);pointer-events:none;z-index:0}
+.pain-core-card>*{position:relative;z-index:1}
+.pain-core-card:hover{border-color:rgba(255,255,255,0.14);transform:translateY(-4px)}
+.pain-core-card .pain-num{font-family:var(--mono);font-size:.68rem;color:#ff5555;letter-spacing:2.5px;margin-bottom:18px;font-weight:600;display:flex;align-items:center;gap:10px}
+.pain-core-card .pain-num::before{content:'';width:20px;height:2px;background:#ff5555;display:inline-block}
+.pain-core-card .pain-title{font-family:var(--serif);font-size:1.45rem;font-weight:400;font-style:italic;color:#ffdddd;margin-bottom:16px;line-height:1.2}
+.pain-core-card .pain-desc{font-size:.86rem;color:var(--gray-200);line-height:1.75;margin-bottom:18px;font-weight:300}
+.pain-core-card .pain-stat{font-family:var(--mono);font-size:.72rem;color:#ff9e9e;letter-spacing:.3px;margin-bottom:24px;padding:12px 14px;background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.25);border-left:3px solid #ff5555;border-radius:8px;line-height:1.55;font-weight:500}
+.pain-core-card .pain-divider{flex:1;min-height:4px}
+.pain-core-card .solution{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);border-left:3px solid #4ade80;border-radius:10px}
+.pain-core-card .arrow{color:#4ade80;font-size:1.1rem;line-height:1.4;flex-shrink:0;font-weight:700}
+.pain-core-card .sol-text strong{display:block;color:#b4f5cb;font-size:.92rem;margin-bottom:6px;font-weight:600;font-family:var(--serif);font-style:italic}
+.pain-core-card .sol-text span{display:block;color:rgba(224,255,232,0.78);font-size:.78rem;line-height:1.7;font-weight:300}
+.pain-sub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-20px}
+.pain-sub-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:12px;padding:0;transition:all .4s;display:flex;flex-direction:column;min-height:240px;overflow:hidden;position:relative}
+.pain-sub-card::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,107,107,0.05),transparent 60%);pointer-events:none;z-index:0}
+.pain-sub-card>*{position:relative;z-index:1}
+.pain-sub-card:hover{border-color:rgba(255,255,255,0.14);transform:translateY(-2px)}
+.pain-sub-card .sub-body{padding:22px 22px 16px;display:flex;flex-direction:column;gap:10px;flex:1;border-left:3px solid #ff5555;border-top-left-radius:11px}
+.pain-sub-card .pain-num{font-family:var(--mono);font-size:.62rem;color:#ff5555;letter-spacing:2px;font-weight:600}
+.pain-sub-card h4{font-size:.98rem;color:#ffdddd;font-weight:500;line-height:1.35;font-family:var(--serif);font-style:italic}
+.pain-sub-card .sub-desc{font-size:.76rem;color:var(--gray-200);line-height:1.7;font-weight:300;flex:1}
+.pain-sub-card .sub-sol{font-family:var(--mono);font-size:.72rem;color:#b4f5cb;padding:14px 22px;background:rgba(74,222,128,0.1);border-top:1px solid rgba(74,222,128,0.25);border-left:3px solid #4ade80;line-height:1.55;letter-spacing:.2px;font-weight:600}
+.pain-sub-card .sub-sol::before{content:'⟶ ';color:#4ade80;font-weight:700;margin-right:4px}
+
+@media(max-width:1024px){
+  .audience-wrap{gap:56px}
+  .persona-tabs{flex-direction:column;width:100%;max-width:420px;border-radius:24px}
+  .persona-tab{padding:14px 20px;border-radius:18px}
+  .persona-row{grid-template-columns:1fr;gap:48px;padding:24px 0}
+  .persona-stack{min-height:auto}
+  .persona-visual{max-width:340px;height:460px}
+  .audience-stats{grid-template-columns:repeat(5,1fr)}
+  .audience-stats .stat-num{font-size:1.4rem}
+  .audience-stats .stat-label{font-size:.62rem}
+  .pain-core-grid{grid-template-columns:1fr;gap:18px;margin-top:-12px}
+  .pain-sub-grid{grid-template-columns:1fr 1fr;gap:14px;margin-top:-12px}
+  .pain-core-card{min-height:auto}
+  .audience-head h2{font-size:2rem}
+  .audience-closing p{font-size:1.05rem}
+  .persona-info h3{font-size:1.6rem}
+}
+@media(max-width:768px){
+  .pain-sub-grid{grid-template-columns:1fr}
+  .audience-stats{grid-template-columns:1fr 1fr;gap:24px 0}
+  .audience-stats .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.04);padding-bottom:16px}
+  .pain-header h2{font-size:2rem}
+  .persona-visual{max-width:300px;height:420px}
+}
 </style>
 </head>
 <body>
@@ -230,6 +372,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="nav-right">
     <div class="nav-links">
       <a href="#hero" class="active" data-en="Home" data-zh="首页">Home</a>
+      <a href="#audience" data-en="Audience" data-zh="人群">Audience</a>
+      <a href="#pain" data-en="Pain Points" data-zh="痛点">Pain Points</a>
       <a href="#about" data-en="Design" data-zh="设计">Design</a>
       <a href="#form" data-en="Form" data-zh="形态">Form</a>
       <a href="#pairing" data-en="Pairing" data-zh="连接">Pairing</a>
@@ -251,6 +395,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 </div>
 <div class="scroll-dot">
   <div class="dot active"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
   <div class="dot"></div>
@@ -279,7 +425,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
     </div>
     <div class="hero-stats">
       <div class="stat-glass">
-        <div class="stat-num">5000</div>
+        <div class="stat-num">10000</div>
         <div class="stat-label" data-en="mAh&lt;br&gt;Battery" data-zh="mAh&lt;br&gt;电池容量">mAh<br>Battery</div>
       </div>
       <div class="stat-glass">
@@ -290,12 +436,335 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   </div>
   <div class="hero-product">
     <img src="images/hero_annotated.webp" alt="POWER UP AI Agent Terminal — Annotated">
-    <div class="slide-counter">01/05</div>
+    <div class="slide-counter">01/08</div>
   </div>
 </section>
 
 <!-- ========================================================
-     02 / OLED DETAIL — Zigzag Left
+     02 / AUDIENCE — 3 Portraits Side-by-Side
+     ======================================================== -->
+<section class="full-section" id="audience" style="padding-top:140px;padding-bottom:140px">
+  <div class="audience-wrap">
+    <!-- Header: title + narrative -->
+    <div class="audience-head">
+      <div class="detail-tag" data-en="Research 01 — Audience" data-zh="研究 01 — 人群画像">Research 01 — Audience</div>
+      <h2 data-en="Three tribes,&lt;br&gt;one vibe coding wave." data-zh="三类人群，&lt;br&gt;同一个 Vibe Coding 浪潮。">Three tribes,<br>one vibe coding wave.</h2>
+      <p data-en="Vibe coding is no longer a hacker's privilege. At SaaS history's fastest pace, it's spreading from Gen Z indie hackers, to 26-40 knowledge-class professionals, all the way to zero-background newcomers." data-zh="Vibe coding 已不再是极客的特权。它正以 SaaS 史上最快速度，从 Z 世代独立开发者，扩散到 26-40 岁高知中产，再到零基础入门新手。">Vibe coding is no longer a hacker's privilege. At SaaS history's fastest pace, it's spreading from Gen Z indie hackers, to 26-40 knowledge-class professionals, all the way to zero-background newcomers.</p>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="audience-stats">
+      <div class="stat-item">
+        <div class="stat-num">$2B</div>
+        <div class="stat-label" data-en="Cursor ARR · 2026.2&lt;br&gt;Fastest SaaS ever" data-zh="Cursor ARR · 2026.2&lt;br&gt;史上最快 SaaS">Cursor ARR · 2026.2<br>Fastest SaaS ever</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1M+</div>
+        <div class="stat-label" data-en="Cursor&lt;br&gt;Daily active users" data-zh="Cursor&lt;br&gt;日活用户">Cursor<br>Daily active users</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">92%</div>
+        <div class="stat-label" data-en="US devs use&lt;br&gt;AI coding daily" data-zh="美国开发者&lt;br&gt;每日使用 AI 编码">US devs use<br>AI coding daily</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">63%</div>
+        <div class="stat-label" data-en="Vibe coders are&lt;br&gt;non-developers" data-zh="Vibe 用户是&lt;br&gt;非开发者">Vibe coders are<br>non-developers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">13K</div>
+        <div class="stat-label" data-en="Chase 500 seats&lt;br&gt;at Anthropic hack" data-zh="抢 500 席&lt;br&gt;Anthropic 黑客松">Chase 500 seats<br>at Anthropic hack</div>
+      </div>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="persona-tabs">
+      <button class="persona-tab active" data-layer="1">
+        <span class="tab-num" data-en="LAYER 01 · CORE" data-zh="LAYER 01 · 核心">LAYER 01 · CORE</span>
+        <span class="tab-name" data-en="Gen Z Indie Builders" data-zh="Z 世代独立开发者">Gen Z Indie Builders</span>
+      </button>
+      <button class="persona-tab" data-layer="2">
+        <span class="tab-num" data-en="LAYER 02 · EXPANDING" data-zh="LAYER 02 · 扩张">LAYER 02 · EXPANDING</span>
+        <span class="tab-name" data-en="Knowledge-class Pros" data-zh="高知中产专业人士">Knowledge-class Pros</span>
+      </button>
+      <button class="persona-tab" data-layer="3">
+        <span class="tab-num" data-en="LAYER 03 · NEWCOMERS" data-zh="LAYER 03 · 入门">LAYER 03 · NEWCOMERS</span>
+        <span class="tab-name" data-en="Zero-background Starters" data-zh="零基础入门新手">Zero-background Starters</span>
+      </button>
+    </div>
+
+    <!-- 3 Personas: left-right panels, Tab-switched -->
+    <div class="persona-stack">
+
+      <!-- Persona 01: Gen Z Indie Builders -->
+      <div class="persona-row active" data-layer="1">
+        <div class="persona-visual">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- Hoodie -->
+            <path class="outline" d="M 110 82 Q 200 32 290 82 L 328 146 Q 352 190 352 238 L 352 358 L 390 424 L 390 500 L 10 500 L 10 424 L 48 358 L 48 238 Q 48 190 72 146 Z"/>
+            <!-- Face circle -->
+            <circle class="outline" cx="200" cy="178" r="68" stroke-width="1.2"/>
+            <!-- Hoodie strings -->
+            <line class="line" x1="176" y1="252" x2="176" y2="348"/>
+            <line class="line" x1="224" y1="252" x2="224" y2="348"/>
+            <circle class="accent" cx="176" cy="350" r="3"/>
+            <circle class="accent" cx="224" cy="350" r="3"/>
+            <!-- hood seam -->
+            <path class="line" d="M 110 82 Q 200 116 290 82" fill="none"/>
+          </svg>
+          <div class="persona-quote" style="top:26%">
+            <span data-en="&amp;ldquo;I ship an app&lt;br&gt;every week.&amp;rdquo;" data-zh="&amp;ldquo;我一周&lt;br&gt;发一个 app。&amp;rdquo;">&ldquo;I ship an app<br>every week.&rdquo;</span>
+            <small data-en="Gen Z · Indie Hacker" data-zh="Z 世代 · 独立开发者">Gen Z · Indie Hacker</small>
+          </div>
+          <div class="persona-badge">
+            <span class="layer-tag" data-en="Layer 01 · The Core" data-zh="Layer 01 · 核心圈">Layer 01 · The Core</span>
+            <span class="layer-name" data-en="Gen Z Indie Builders" data-zh="Z 世代独立开发者">Gen Z Indie Builders</span>
+          </div>
+        </div>
+        <div class="persona-info">
+          <div class="info-head">
+            <span class="num" data-en="01 / CORE" data-zh="01 / 核心圈">01 / CORE</span>
+            <span class="line-h"></span>
+          </div>
+          <h3 data-en="The builders who&lt;br&gt;&lt;em&gt;ship weekly.&lt;/em&gt;" data-zh="一群&lt;br&gt;&lt;em&gt;每周发产品&lt;/em&gt; 的建设者。">The builders who<br><em>ship weekly.</em></h3>
+          <span class="sub-name" data-en="22–28 YO · Indie Hackers · Already paying users" data-zh="22–28 岁 · 独立开发者 · 已付费用户">22–28 YO · Indie Hackers · Already paying users</span>
+
+          <div class="persona-block">
+            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <ul>
+              <li data-en="&lt;strong&gt;Indie Hackers&lt;/strong&gt; building MVPs weekly on Cursor, Claude Code, and Lovable" data-zh="&lt;strong&gt;独立开发者&lt;/strong&gt;，每周在 Cursor / Claude Code / Lovable 上构建 MVP"><strong>Indie Hackers</strong> building MVPs weekly on Cursor, Claude Code, and Lovable</li>
+              <li data-en="Already paying &lt;strong&gt;$20-200/month&lt;/strong&gt; for AI tools. Hooked on voice-first workflows" data-zh="每月为 AI 工具付费 &lt;strong&gt;$20-200&lt;/strong&gt;，沉迷语音优先的工作流"><strong>$20-200/month</strong> already spent on AI tools. Hooked on voice-first workflows</li>
+              <li data-en="Live on Twitter/X, GitHub, V2EX, Product Hunt. Ship in public, grind at hackathons" data-zh="活跃在 Twitter/X、GitHub、V2EX、Product Hunt，在黑客松现场开发">Live on Twitter/X, GitHub, V2EX, Product Hunt. Ship in public, grind at hackathons</li>
+            </ul>
+          </div>
+
+          <div class="persona-block pain-block">
+            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <ul>
+              <li data-en="Typing can't catch the brain.&lt;em&gt;Thinks at 150 wpm, types at 40.&lt;/em&gt;" data-zh="打字，追不上脑子。&lt;em&gt;思考 150 wpm，手指 40 wpm。&lt;/em&gt;">Typing can't catch the brain.<em>Thinks at 150 wpm, types at 40.</em></li>
+              <li data-en="No laptop = no work.&lt;em&gt;Cursor doesn't exist on phone or iPad.&lt;/em&gt;" data-zh="没电脑，寸步难行。&lt;em&gt;Cursor 在手机和 iPad 上都不存在。&lt;/em&gt;">No laptop = no work.<em>Cursor doesn't exist on phone or iPad.</em></li>
+              <li data-en="One ping shatters the flow.&lt;em&gt;WeChat, Slack, email — the AI loop restarts.&lt;/em&gt;" data-zh="一个通知，心流全碎。&lt;em&gt;微信、Slack、邮件，AI 循环从零重启。&lt;/em&gt;">One ping shatters the flow.<em>WeChat, Slack, email — the AI loop restarts.</em></li>
+            </ul>
+          </div>
+
+          <div class="persona-demo" data-en="22-28 YO · $20/MO CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS" data-zh="22-28 岁 · $20/月 CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS">22-28 YO · $20/MO CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS</div>
+        </div>
+      </div>
+
+      <!-- Persona 02: Knowledge-class Pros -->
+      <div class="persona-row" data-layer="2">
+        <div class="persona-visual">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- Head -->
+            <circle class="outline" cx="200" cy="138" r="72"/>
+            <!-- Blazer body -->
+            <path class="outline" d="M 80 288 Q 148 228 200 228 Q 252 228 320 288 L 360 412 L 360 500 L 40 500 L 40 412 Z"/>
+            <!-- V collar -->
+            <path class="line" d="M 172 240 L 200 300 L 228 240"/>
+            <!-- Lapels -->
+            <line class="line" x1="142" y1="278" x2="184" y2="340"/>
+            <line class="line" x1="258" y1="278" x2="216" y2="340"/>
+            <!-- pocket line -->
+            <line class="line" x1="262" y1="360" x2="300" y2="360"/>
+          </svg>
+          <div class="persona-quote" style="top:22%">
+            <span data-en="&amp;ldquo;I just want to&lt;br&gt;automate my own work.&amp;rdquo;" data-zh="&amp;ldquo;我只想自动化&lt;br&gt;自己的工作。&amp;rdquo;">&ldquo;I just want to<br>automate my own work.&rdquo;</span>
+            <small data-en="26-40 · Knowledge Pros" data-zh="26-40 · 高知中产">26-40 · Knowledge Pros</small>
+          </div>
+          <div class="persona-badge">
+            <span class="layer-tag" data-en="Layer 02 · Expanding" data-zh="Layer 02 · 扩张圈">Layer 02 · Expanding</span>
+            <span class="layer-name" data-en="Knowledge-class Pros" data-zh="高知中产专业人士">Knowledge-class Pros</span>
+          </div>
+        </div>
+        <div class="persona-info">
+          <div class="info-head">
+            <span class="num" data-en="02 / EXPANDING" data-zh="02 / 扩张圈">02 / EXPANDING</span>
+            <span class="line-h"></span>
+          </div>
+          <h3 data-en="The pros who want&lt;br&gt;&lt;em&gt;to bypass the backlog.&lt;/em&gt;" data-zh="一群想要&lt;br&gt;&lt;em&gt;跳过开发排期&lt;/em&gt; 的专业人士。">The pros who want<br><em>to bypass the backlog.</em></h3>
+          <span class="sub-name" data-en="28–40 YO · PM, Design Lead, Dept Head · Tier-1 city" data-zh="28–40 岁 · PM/设计/部门主管 · 一线城市">28–40 YO · PM, Design Lead, Dept Head · Tier-1 city</span>
+
+          <div class="persona-block">
+            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <ul>
+              <li data-en="&lt;strong&gt;Product managers, designers, department heads&lt;/strong&gt; — high-income, high-agency, but not full-time coders" data-zh="&lt;strong&gt;产品经理、设计师、部门主管&lt;/strong&gt;——高收入、高决策权，但不是全职码农"><strong>Product managers, designers, department heads</strong> — high-income, high-agency, but not full-time coders</li>
+              <li data-en="Building &lt;strong&gt;side projects and internal tools&lt;/strong&gt; to automate their own workflow" data-zh="构建 &lt;strong&gt;副业产品和内部工具&lt;/strong&gt;，自动化自己的工作流"><strong>Side projects and internal tools</strong> — automating the pain out of their own job</li>
+              <li data-en="Tier-1 city, core family, household income ¥300-800K. Live on 即刻, 小红书, 知乎" data-zh="一线城市，核心家庭，家庭年收入 30-80 万。活跃在即刻、小红书、知乎">Tier-1 city, core family, ¥300-800K household. Live on 即刻, 小红书, 知乎</li>
+            </ul>
+          </div>
+
+          <div class="persona-block pain-block">
+            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <ul>
+              <li data-en="No time to learn code.&lt;em&gt;Only commutes, lunch breaks, after-kids fragments.&lt;/em&gt;" data-zh="没时间学编程。&lt;em&gt;只有通勤、午休、哄娃睡后的碎片时间。&lt;/em&gt;">No time to learn code.<em>Only commutes, lunch breaks, after-kids fragments.</em></li>
+              <li data-en="Dev backlog is 3 weeks.&lt;em&gt;Every automation idea dies in the queue.&lt;/em&gt;" data-zh="排期要等 3 周。&lt;em&gt;每个自动化想法都死在排期里。&lt;/em&gt;">Dev backlog is 3 weeks.<em>Every automation idea dies in the queue.</em></li>
+              <li data-en="Setup is a dead wall.&lt;em&gt;Node, proxy, API, English errors — quit before prompt one.&lt;/em&gt;" data-zh="环境配置是死墙。&lt;em&gt;Node、代理、API、英文报错，在第一条 prompt 前就放弃。&lt;/em&gt;">Setup is a dead wall.<em>Node, proxy, API, English errors — quit before prompt one.</em></li>
+            </ul>
+          </div>
+
+          <div class="persona-demo" data-en="28-40 YO · TIER-1 CITY · CORE FAMILY · ¥300-800K · 即刻 · 小红书 · 知乎" data-zh="28-40 岁 · 一线城市 · 核心家庭 · ¥300-800K · 即刻 · 小红书 · 知乎">28-40 YO · TIER-1 CITY · CORE FAMILY · ¥300-800K · 即刻 · 小红书 · 知乎</div>
+        </div>
+      </div>
+
+      <!-- Persona 03: Newcomers -->
+      <div class="persona-row" data-layer="3">
+        <div class="persona-visual">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <!-- Round head -->
+            <circle class="outline" cx="182" cy="160" r="80"/>
+            <!-- Body -->
+            <path class="outline" d="M 78 314 Q 140 260 182 260 Q 224 260 292 314 L 330 440 L 330 500 L 34 500 L 34 440 Z"/>
+            <!-- Question bubble -->
+            <circle class="outline" cx="332" cy="74" r="34"/>
+            <text x="332" y="90" text-anchor="middle" font-size="42" fill="rgba(255,255,255,0.5)" font-family="Playfair Display, serif" font-style="italic">?</text>
+            <line class="line" x1="304" y1="100" x2="282" y2="120"/>
+            <line class="line" x1="296" y1="108" x2="278" y2="126"/>
+          </svg>
+          <div class="persona-quote" style="top:26%;left:46%">
+            <span data-en="&amp;ldquo;I want to build&lt;br&gt;my own app too.&amp;rdquo;" data-zh="&amp;ldquo;我也想做&lt;br&gt;一个自己的 app。&amp;rdquo;">&ldquo;I want to build<br>my own app too.&rdquo;</span>
+            <small data-en="Newcomers · Zero Background" data-zh="入门新手 · 零基础">Newcomers · Zero Background</small>
+          </div>
+          <div class="persona-badge">
+            <span class="layer-tag" data-en="Layer 03 · Newcomers" data-zh="Layer 03 · 入门圈">Layer 03 · Newcomers</span>
+            <span class="layer-name" data-en="Zero-background Starters" data-zh="零基础入门新手">Zero-background Starters</span>
+          </div>
+        </div>
+        <div class="persona-info">
+          <div class="info-head">
+            <span class="num" data-en="03 / NEWCOMERS" data-zh="03 / 入门圈">03 / NEWCOMERS</span>
+            <span class="line-h"></span>
+          </div>
+          <h3 data-en="The newcomers who&lt;br&gt;&lt;em&gt;dream of shipping one.&lt;/em&gt;" data-zh="一群&lt;br&gt;&lt;em&gt;梦想拥有自己 app&lt;/em&gt; 的新手。">The newcomers who<br><em>dream of shipping one.</em></h3>
+          <span class="sub-name" data-en="18–35 YO · 55% female · Xiaohongshu-pilled · Zero code" data-zh="18–35 岁 · 55% 女性 · 小红书种草 · 零代码">18–35 YO · 55% female · Xiaohongshu-pilled · Zero code</span>
+
+          <div class="persona-block">
+            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <ul>
+              <li data-en="&lt;strong&gt;Liberal arts grads, moms, ops staff, career changers&lt;/strong&gt; — got Xiaohongshu-pilled by vibe coding" data-zh="&lt;strong&gt;文科生、宝妈、运营、转行人士&lt;/strong&gt;——被小红书种草"><strong>Liberal arts grads, moms, ops, career changers</strong> — Xiaohongshu-pilled by vibe coding</li>
+              <li data-en="Paid &lt;strong&gt;9.9-99 RMB&lt;/strong&gt; for a course, watched Bilibili tutorials, ready to try the first prompt" data-zh="花 &lt;strong&gt;9.9-99 元&lt;/strong&gt; 买课，刷完 B 站教程，准备写第一条 prompt">Paid <strong>9.9-99 RMB</strong> for a course, binged Bilibili tutorials, ready to prompt</li>
+              <li data-en="&lt;strong&gt;FOMO-driven&lt;/strong&gt;, don't want to be left behind in the AI era. Price-sensitive but motivated" data-zh="&lt;strong&gt;FOMO 驱动&lt;/strong&gt;，不想在 AI 时代掉队。对价格敏感，但学习动力强"><strong>FOMO-driven</strong>, refusing to fall behind in the AI era. Price-sensitive but highly motivated</li>
+            </ul>
+          </div>
+
+          <div class="persona-block pain-block">
+            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <ul>
+              <li data-en="Don't know where to start.&lt;em&gt;Cursor opens, blank editor, total freeze.&lt;/em&gt;" data-zh="不知从哪开始。&lt;em&gt;Cursor 打开，空编辑器，完全懵住。&lt;/em&gt;">Don't know where to start.<em>Cursor opens, blank editor, total freeze.</em></li>
+              <li data-en="English errors = instant quit.&lt;em&gt;Node, npm, Git — all alien incantations.&lt;/em&gt;" data-zh="英文报错就放弃。&lt;em&gt;Node、npm、Git 全是外星咒语。&lt;/em&gt;">English errors = instant quit.<em>Node, npm, Git — all alien incantations.</em></li>
+              <li data-en="Quit before line one.&lt;em&gt;Setup hell kills them before the first prompt.&lt;/em&gt;" data-zh="第一行前就放弃。&lt;em&gt;环境配置直接把他们挡在门外。&lt;/em&gt;">Quit before line one.<em>Setup hell kills them before the first prompt.</em></li>
+            </ul>
+          </div>
+
+          <div class="persona-demo" data-en="18-35 YO · 55% FEMALE · XIAOHONGSHU · DOUYIN · BILIBILI · 9.9 RMB COURSES" data-zh="18-35 岁 · 55% 女性 · 小红书 · 抖音 · B 站 · 9.9 元课">18-35 YO · 55% FEMALE · XIAOHONGSHU · DOUYIN · BILIBILI · 9.9 RMB COURSES</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Closing narrative -->
+    <div class="audience-closing">
+      <p data-en="All three are riding the same &lt;span class='accent'&gt;vibe coding wave&lt;/span&gt;, &lt;br&gt;but each one hits &lt;span class='accent'&gt;a different wall&lt;/span&gt;." data-zh="他们同在一道 &lt;span class='accent'&gt;Vibe Coding 浪潮&lt;/span&gt; 之上，&lt;br&gt;却各自撞上 &lt;span class='accent'&gt;一堵不同的墙&lt;/span&gt;。">All three are riding the same <span class="accent">vibe coding wave</span>, <br>but each one hits <span class="accent">a different wall</span>.</p>
+      <small data-en="Power Up is forged for all three" data-zh="Power Up 为这三类人同时而生">Power Up is forged for all three</small>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     03 / PAIN POINTS — 7 Frictions
+     ======================================================== -->
+<section class="full-section alt" id="pain" style="padding-top:140px;padding-bottom:140px">
+  <div class="pain-section">
+    <div class="pain-header">
+      <div class="detail-tag" data-en="Research 02 — Pain Points" data-zh="研究 02 — 核心痛点">Research 02 — Pain Points</div>
+      <h2 data-en="Seven frictions,&lt;br&gt;forged into one answer." data-zh="七种摩擦，&lt;br&gt;铸成一个答案。">Seven frictions,<br>forged into one answer.</h2>
+      <p data-en="Every pain below is pulled from real 2026 research on vibe coding users. Power Up was engineered against each one." data-zh="以下每一项痛点都来自 2026 年 Vibe Coding 用户的真实研究数据。Power Up 的每一处设计，都是对它们的回应。">Every pain below is pulled from real 2026 research on vibe coding users. Power Up was engineered against each one.</p>
+    </div>
+
+    <div class="pain-core-label" data-en="Top 3 Core Frictions" data-zh="三大核心摩擦">Top 3 Core Frictions</div>
+    <div class="pain-core-grid">
+      <div class="pain-core-card">
+        <div class="pain-num">FRICTION 01</div>
+        <h3 class="pain-title" data-en="The typing&lt;br&gt;bottleneck." data-zh="打字的&lt;br&gt;瓶颈。">The typing<br>bottleneck.</h3>
+        <p class="pain-desc" data-en="You think at 150 wpm. Your fingers type at 40. Every prompt loses 70% of what you meant to say." data-zh="你的大脑每分钟思考 150 词，手指只能敲 40 词。每一条 prompt 都在丢失 70% 的原意。">You think at 150 wpm. Your fingers type at 40. Every prompt loses 70% of what you meant to say.</p>
+        <div class="pain-stat" data-en="66% of devs hit the &lsquo;productivity tax&rsquo; — GitHub Survey 2026" data-zh="66% 开发者碰到 &ldquo;生产力税&rdquo; — GitHub 2026 调研">66% of devs hit the &ldquo;productivity tax&rdquo; — GitHub Survey 2026</div>
+        <div class="pain-divider"></div>
+        <div class="solution">
+          <span class="arrow">⟶</span>
+          <div class="sol-text">
+            <strong data-en="Press. Speak. Ship." data-zh="按下。说话。发布。">Press. Speak. Ship.</strong>
+            <span data-en="Dual MEMS mic array + noise cancellation. Voice prompts generate code with 60–80% fewer manual edits." data-zh="双 MEMS 麦克风阵列 + 降噪。语音 prompt 生成的代码，手动编辑减少 60–80%。">Dual MEMS mic array + noise cancellation. Voice prompts generate code with 60–80% fewer manual edits.</span>
+          </div>
+        </div>
+      </div>
+      <div class="pain-core-card">
+        <div class="pain-num">FRICTION 02</div>
+        <h3 class="pain-title" data-en="Chained to&lt;br&gt;the laptop." data-zh="被笔记本&lt;br&gt;绑架。">Chained to<br>the laptop.</h3>
+        <p class="pain-desc" data-en="Cursor doesn't exist on your phone. Commutes, lunch breaks, airport layovers — hours of vibe coding evaporate." data-zh="Cursor 在手机上不存在。通勤、午休、候机，每一段碎片时间都在蒸发。">Cursor doesn't exist on your phone. Commutes, lunch breaks, airport layovers — hours of vibe coding evaporate.</p>
+        <div class="pain-stat" data-en="Mobile vibe coding is the #1 unmet scenario — PainIndex 2026" data-zh="移动场景是第一大未满足需求 — PainIndex 2026">Mobile vibe coding is the #1 unmet scenario — PainIndex 2026</div>
+        <div class="pain-divider"></div>
+        <div class="solution">
+          <span class="arrow">⟶</span>
+          <div class="sol-text">
+            <strong data-en="Pocket-sized vibe terminal." data-zh="口袋大小的 Vibe 终端。">Pocket-sized vibe terminal.</strong>
+            <span data-en="10000mAh power bank × AI controller in one triangle. Plug in anywhere. Code everywhere." data-zh="10000mAh 充电宝 × AI 控制器，浓缩为一个三角形。插上即用，随处可写。">10000mAh power bank × AI controller in one triangle. Plug in anywhere. Code everywhere.</span>
+          </div>
+        </div>
+      </div>
+      <div class="pain-core-card">
+        <div class="pain-num">FRICTION 03</div>
+        <h3 class="pain-title" data-en="The setup&lt;br&gt;wall." data-zh="配置的&lt;br&gt;高墙。">The setup<br>wall.</h3>
+        <p class="pain-desc" data-en="Install Node. Configure API. Set up proxy. Debug errors in English. Most beginners quit before writing one line." data-zh="装 Node、配 API、开代理、读英文报错——大多数新手在写第一行代码前就已经放弃。">Install Node. Configure API. Set up proxy. Debug errors in English. Most beginners quit before writing one line.</p>
+        <div class="pain-stat" data-en="63% of vibe coding users are non-developers — Hashnode 2026" data-zh="63% Vibe Coding 用户是非开发者 — Hashnode 2026">63% of vibe coding users are non-developers — Hashnode 2026</div>
+        <div class="pain-divider"></div>
+        <div class="solution">
+          <span class="arrow">⟶</span>
+          <div class="sol-text">
+            <strong data-en="Zero-config, out of box." data-zh="零配置，开箱即用。">Zero-config, out of box.</strong>
+            <span data-en="JoyInside AI stack preloaded. Native Chinese prompts. No Node, no proxy, no Stack Overflow." data-zh="JoyInside AI 全栈预载。原生中文 prompt。不装 Node、不开代理、不再查 Stack Overflow。">JoyInside AI stack preloaded. Native Chinese prompts. No Node, no proxy, no Stack Overflow.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pain-sub-label" data-en="4 Secondary Frictions" data-zh="四项次要摩擦">4 Secondary Frictions</div>
+    <div class="pain-sub-grid">
+      <div class="pain-sub-card">
+        <div class="sub-body">
+          <div class="pain-num">04 · FLOW</div>
+          <h4 data-en="Context-switching fatigue" data-zh="心流被切断">Context-switching fatigue</h4>
+          <p class="sub-desc" data-en="WeChat, email, Slack — every ping breaks the Prompt→Wait→Review→Debug loop. Senior devs run 19% slower with AI." data-zh="微信、邮件、Slack，每次提醒都打断 &ldquo;Prompt→Wait→Review→Debug&rdquo; 循环。资深开发者用 AI 反而慢 19%。">WeChat, email, Slack — every ping breaks the Prompt→Wait→Review→Debug loop. Senior devs run 19% slower with AI.</p>
+        </div>
+        <div class="sub-sol" data-en="Single-task focus device" data-zh="物理专注设备 · 单任务无干扰">Single-task focus device</div>
+      </div>
+      <div class="pain-sub-card">
+        <div class="sub-body">
+          <div class="pain-num">05 · API</div>
+          <h4 data-en="Proxy & quota hell" data-zh="代理与额度地狱">Proxy & quota hell</h4>
+          <p class="sub-desc" data-en="Chinese users must configure API forwarding just to keep Claude Code alive. Rate limits shatter flow mid-task." data-zh="中国用户必须配置 API 代理才能用 Claude Code。Rate limit 动不动就打断任务。">Chinese users must configure API forwarding just to keep Claude Code alive. Rate limits shatter flow mid-task.</p>
+        </div>
+        <div class="sub-sol" data-en="Built-in stable relay · quota on OLED" data-zh="内置稳定中转 · OLED 显示额度">Built-in stable relay · quota on OLED</div>
+      </div>
+      <div class="pain-sub-card">
+        <div class="sub-body">
+          <div class="pain-num">06 · POWER</div>
+          <h4 data-en="Laptop dies in 2 hours" data-zh="笔记本 2 小时就见底">Laptop dies in 2 hours</h4>
+          <p class="sub-desc" data-en="Vibe coding hammers CPU and network. Long AI sessions drain a MacBook faster than any other workflow." data-zh="Vibe coding 是高 CPU + 高网络的重负载场景。长时间 AI 对话让 MacBook 比任何场景都更快断电。">Vibe coding hammers CPU and network. Long AI sessions drain a MacBook faster than any other workflow.</p>
+        </div>
+        <div class="sub-sol" data-en="10000mAh live-feed · charge while you code" data-zh="10000mAh 随插随充 · 写码同时续电">10000mAh live-feed · charge while you code</div>
+      </div>
+      <div class="pain-sub-card">
+        <div class="sub-body">
+          <div class="pain-num">07 · HACKS</div>
+          <h4 data-en="Hackathon survival kit" data-zh="黑客松生存装备">Hackathon survival kit</h4>
+          <p class="sub-desc" data-en="48-hour hackathons need stable API, reliable power, fast input — all in one pocket. 13,000 chased Anthropic's 500 seats." data-zh="48 小时黑客松同时需要稳定 API、充足电源、快速输入——全在一个口袋里。13,000 人抢 Anthropic 500 席。">48-hour hackathons need stable API, reliable power, fast input — all in one pocket. 13,000 chased Anthropic's 500 seats.</p>
+        </div>
+        <div class="sub-sol" data-en="Three-in-one · voice + power + API" data-zh="三合一装备 · 语音 + 电源 + API">Three-in-one · voice + power + API</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     04 / OLED DETAIL — Zigzag Left
      ======================================================== -->
 <section class="full-section" id="about">
   <div class="detail-row">
@@ -322,7 +791,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
     <div class="detail-content">
       <div class="detail-tag" data-en="02 — Dual Mode" data-zh="02 — 双形态">02 — Dual Mode</div>
       <h2 data-en="Power bank by day.&lt;br&gt;AI terminal on demand." data-zh="日常是充电宝。&lt;br&gt;连接即变 AI 终端。">Power bank by day.<br>AI terminal on demand.</h2>
-      <p data-en="Unconnected, Power Up is a &lt;span class='highlight'&gt;premium 5000mAh portable charger&lt;/span&gt; with a folding USB-C plug. The triangular form sits perfectly in your palm or stands upright on any surface." data-zh="未连接时，Power Up 是一块 &lt;span class='highlight'&gt;5000mAh 高端移动电源&lt;/span&gt;，配备折叠 USB-C 充电插头。三角形机身完美贴合掌心，也可立于桌面。">Unconnected, Power Up is a <span class="highlight">premium 5000mAh portable charger</span> with a folding USB-C plug. The triangular form sits perfectly in your palm or stands upright on any surface.</p>
+      <p data-en="Unconnected, Power Up is a &lt;span class='highlight'&gt;premium 10000mAh portable charger&lt;/span&gt; with a folding USB-C plug. The triangular form sits perfectly in your palm or stands upright on any surface." data-zh="未连接时，Power Up 是一块 &lt;span class='highlight'&gt;10000mAh 高端移动电源&lt;/span&gt;，配备折叠 USB-C 充电插头。三角形机身完美贴合掌心，也可立于桌面。">Unconnected, Power Up is a <span class="highlight">premium 10000mAh portable charger</span> with a folding USB-C plug. The triangular form sits perfectly in your palm or stands upright on any surface.</p>
       <p data-en="Connect via &lt;span class='highlight'&gt;BLE 5.3 or USB-C&lt;/span&gt; to your laptop or phone, and it transforms into a dedicated AI Agent controller — voice commands flow through JoyInside ASR, responses come back as text, speech, and ambient light." data-zh="通过 &lt;span class='highlight'&gt;BLE 5.3 或 USB-C&lt;/span&gt; 连接电脑/手机，即刻变身专属 AI Agent 控制器 — 语音指令经由 JoyInside ASR 处理，响应以文字、语音和氛围灯呈现。">Connect via <span class="highlight">BLE 5.3 or USB-C</span> to your laptop or phone, and it transforms into a dedicated AI Agent controller — voice commands flow through JoyInside ASR, responses come back as text, speech, and ambient light.</p>
     </div>
   </div>
@@ -429,15 +898,15 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
         <div class="spec-row"><span class="spec-key" data-en="Material" data-zh="材质">Material</span><span class="spec-val" data-en="Aluminum Alloy, Anodized Matte" data-zh="铝合金，磨砂阳极氧化">Aluminum Alloy, Anodized Matte</span></div>
         <div class="spec-row"><span class="spec-key" data-en="Display" data-zh="显示屏">Display</span><span class="spec-val">1.3" OLED, 240x240</span></div>
         <div class="spec-row"><span class="spec-key" data-en="Controls" data-zh="控制">Controls</span><span class="spec-val" data-en="MIC Key + Scroll + Confirm + Cancel" data-zh="MIC 键 + 滚轮 + 确认 + 取消">MIC Key + Scroll + Confirm + Cancel</span></div>
-        <div class="spec-row"><span class="spec-key" data-en="Weight" data-zh="重量">Weight</span><span class="spec-val">~145g</span></div>
+        <div class="spec-row"><span class="spec-key" data-en="Weight" data-zh="重量">Weight</span><span class="spec-val">~220g</span></div>
       </div>
       <div class="specs-group">
         <h3 data-en="Performance" data-zh="性能参数">Performance</h3>
         <div class="spec-row"><span class="spec-key" data-en="MCU" data-zh="主控">MCU</span><span class="spec-val">ESP32-S3 Dual-Core LX7</span></div>
-        <div class="spec-row"><span class="spec-key" data-en="Battery" data-zh="电池">Battery</span><span class="spec-val" data-en="5000mAh Custom LiPo, 3.87V" data-zh="5000mAh 定制锂聚合物, 3.87V">5000mAh Custom LiPo, 3.87V</span></div>
+        <div class="spec-row"><span class="spec-key" data-en="Battery" data-zh="电池">Battery</span><span class="spec-val" data-en="10000mAh Custom Triangular LiPo, 3.87V, 38.7Wh" data-zh="10000mAh 定制三角形异形锂聚合物, 3.87V, 38.7Wh">10000mAh Custom Triangular LiPo, 3.87V, 38.7Wh</span></div>
         <div class="spec-row"><span class="spec-key" data-en="Connectivity" data-zh="连接">Connectivity</span><span class="spec-val">BLE 5.3 + WiFi + USB-C CDC</span></div>
         <div class="spec-row"><span class="spec-key" data-en="Audio" data-zh="音频">Audio</span><span class="spec-val" data-en="Dual MEMS Mic + 1W Speaker" data-zh="双 MEMS 麦克风 + 1W 扬声器">Dual MEMS Mic + 1W Speaker</span></div>
-        <div class="spec-row"><span class="spec-key" data-en="Charging" data-zh="充电">Charging</span><span class="spec-val">USB-C PD In/Out, 5V/2A</span></div>
+        <div class="spec-row"><span class="spec-key" data-en="Charging" data-zh="充电">Charging</span><span class="spec-val" data-en="USB-C PD 30W In/Out (5V/3A, 9V/3A, 15V/2A)" data-zh="USB-C PD 30W 双向 (5V/3A, 9V/3A, 15V/2A)">USB-C PD 30W In/Out (5V/3A, 9V/3A, 15V/2A)</span></div>
       </div>
       <div class="specs-group">
         <h3 data-en="AI Platform" data-zh="AI 平台">AI Platform</h3>
@@ -625,6 +1094,17 @@ langToggle.addEventListener('click', (e) => {
   const btn = e.target.closest('span[data-lang]');
   if (!btn || btn.dataset.lang === currentLang) return;
   applyLang(btn.dataset.lang);
+});
+
+// ===== PERSONA TAB SWITCHING =====
+const personaTabs = document.querySelectorAll('.persona-tab');
+const personaRows = document.querySelectorAll('.persona-row');
+personaTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const layer = tab.dataset.layer;
+    personaTabs.forEach(t => t.classList.toggle('active', t.dataset.layer === layer));
+    personaRows.forEach(r => r.classList.toggle('active', r.dataset.layer === layer));
+  });
 });
 
 // Apply default language on page load
