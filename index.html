@@ -28,31 +28,51 @@
   --gray-700:#2a2a2d;
   --gray-800:#1a1a1d;
 }
-html{scroll-behavior:smooth;background:#06080e}
-/* Ambient depth background — fixed multi-layer radial glow */
+html{scroll-behavior:smooth;background:#05070c}
+/* ========== STUDIO AMBIENT BACKGROUND ==========
+   Mimics a dark photography studio: wall-floor split, warm key light
+   from top-right, cool fill from left, deep shadow pool at the
+   bottom — creates physical spatial depth instead of a flat black plane.
+*/
 body{
   font-family:var(--sans);
   color:var(--gray-300);
   line-height:1.7;
   overflow-x:hidden;
   background:
-    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(72,104,176,0.14), transparent 62%),
-    radial-gradient(ellipse 55% 45% at 12% 28%, rgba(60,140,210,0.08), transparent 58%),
-    radial-gradient(ellipse 55% 55% at 92% 58%, rgba(200,130,70,0.07), transparent 62%),
-    radial-gradient(ellipse 60% 40% at 20% 78%, rgba(90,60,180,0.08), transparent 60%),
-    radial-gradient(ellipse 110% 70% at 50% 108%, rgba(26,40,96,0.14), transparent 72%),
-    linear-gradient(180deg, #0a0c14 0%, #080a12 40%, #070913 80%, #060811 100%);
+    /* 1) Studio key light — warm spotlight from top-right corner */
+    radial-gradient(ellipse 65% 50% at 86% -8%, rgba(255,210,160,0.18), transparent 52%),
+    /* 2) Cool rim / fill light from upper-left */
+    radial-gradient(ellipse 55% 45% at 6% 16%, rgba(105,150,220,0.11), transparent 55%),
+    /* 3) Subtle warm spill on right mid for metallic reflection */
+    radial-gradient(ellipse 45% 35% at 95% 55%, rgba(220,160,110,0.05), transparent 60%),
+    /* 4) Bounce light at the horizon — simulates light hitting a reflective floor */
+    radial-gradient(ellipse 85% 22% at 50% 58%, rgba(180,200,230,0.05), transparent 70%),
+    /* 5) Floor shadow pool — deep darkness at the bottom */
+    radial-gradient(ellipse 150% 45% at 50% 108%, rgba(0,0,0,0.65), transparent 58%),
+    /* 6) Left side edge darkness — wall shadow */
+    linear-gradient(90deg, rgba(0,0,0,0.4) 0%, transparent 28%),
+    /* 7) Right lower edge darkness — opposite corner fade */
+    linear-gradient(270deg, rgba(0,0,0,0.25) 0%, transparent 35%),
+    /* 8) Wall-to-floor gradient with a clear horizon break at ~55% */
+    linear-gradient(180deg,
+      #141824 0%,       /* wall top — lightest concrete */
+      #121620 28%,      /* wall mid */
+      #0f131d 52%,      /* horizon line */
+      #0b0e16 72%,      /* floor upper */
+      #06080e 100%);    /* floor bottom — deepest */
   background-attachment:fixed;
   background-repeat:no-repeat;
 }
-/* Vignette — darkens the edges to focus the viewer */
+/* Vignette — darkens the 4 edges for cinematic focus */
 body::after{
   content:'';
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:1;
-  background:radial-gradient(ellipse 120% 85% at 50% 50%, transparent 55%, rgba(0,0,0,0.45) 100%);
+  background:
+    radial-gradient(ellipse 115% 80% at 50% 50%, transparent 48%, rgba(0,0,0,0.55) 100%);
 }
 ::selection{background:rgba(255,255,255,0.15);color:#fff}
 
@@ -70,9 +90,9 @@ html[lang="zh-CN"] .footer-brand span{
 html[lang="zh-CN"] .hero-text h1{font-size:clamp(2.6rem,5vw,4.2rem)}
 html[lang="zh-CN"] .hero-text h1 em{font-weight:200 !important;color:var(--gray-200)}
 
-/* ===== NOISE TEXTURE OVERLAY ===== */
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+/* ===== NOISE / CONCRETE GRAIN OVERLAY ===== */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.055;mix-blend-mode:overlay;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.65 0 0 0 0 0.7 0 0 0 0 0.78 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
 
 /* ===== NAV ===== */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(12,12,15,0.6)}
