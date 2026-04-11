@@ -272,6 +272,25 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .nav-links a{font-size:.75rem}
 }
 
+/* ===== LIFESTYLE MOMENT ===== */
+.lifestyle-wrap{max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.lifestyle-visual{position:relative;border-radius:20px;overflow:hidden}
+.lifestyle-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,transparent 55%,rgba(10,12,20,0.9) 100%);pointer-events:none}
+.lifestyle-visual img{width:100%;display:block}
+.lifestyle-content{padding:20px 0}
+.lifestyle-content .detail-tag{margin-bottom:22px}
+.lifestyle-content h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);line-height:1.15;margin-bottom:24px;letter-spacing:-.5px}
+.lifestyle-content h2 em{font-style:italic;color:var(--gray-200);display:block}
+.lifestyle-content p{font-size:1.08rem;color:var(--gray-100);line-height:1.85;font-weight:300;margin-bottom:18px;max-width:480px}
+.lifestyle-quote{margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--gray-100);line-height:1.55;max-width:480px}
+.lifestyle-quote small{display:block;margin-top:10px;font-family:var(--mono);font-style:normal;font-size:.76rem;color:var(--gray-300);letter-spacing:2px;text-transform:uppercase;font-weight:500}
+@media(max-width:1024px){
+  .lifestyle-wrap{grid-template-columns:1fr;gap:48px}
+  .lifestyle-content{text-align:center;padding:0}
+  .lifestyle-content p,.lifestyle-quote{max-width:100%;margin-left:auto;margin-right:auto}
+  .lifestyle-content h2{font-size:2.2rem}
+}
+
 /* ===== AUDIENCE SECTION ===== */
 .audience-wrap{display:flex;flex-direction:column;gap:72px;max-width:1320px;margin:0 auto;width:100%}
 .audience-head{text-align:center;max-width:760px;margin:0 auto}
@@ -434,6 +453,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="nav-right">
     <div class="nav-links">
       <a href="#hero" class="active" data-en="Home" data-zh="首页">Home</a>
+      <a href="#lifestyle" data-en="In Use" data-zh="使用">In Use</a>
       <a href="#audience" data-en="Audience" data-zh="人群">Audience</a>
       <a href="#pain" data-en="Pain Points" data-zh="痛点">Pain Points</a>
       <a href="#about" data-en="Design" data-zh="设计">Design</a>
@@ -457,6 +477,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 </div>
 <div class="scroll-dot">
   <a href="#hero" class="dot-item active" data-target="hero"><span class="dot"></span><span class="label" data-en="Home" data-zh="首页">Home</span></a>
+  <a href="#lifestyle" class="dot-item" data-target="lifestyle"><span class="dot"></span><span class="label" data-en="In Use" data-zh="使用场景">In Use</span></a>
   <a href="#audience" class="dot-item" data-target="audience"><span class="dot"></span><span class="label" data-en="Audience" data-zh="人群画像">Audience</span></a>
   <a href="#pain" class="dot-item" data-target="pain"><span class="dot"></span><span class="label" data-en="Pain Points" data-zh="核心痛点">Pain Points</span></a>
   <a href="#about" class="dot-item" data-target="about"><span class="dot"></span><span class="label" data-en="Display" data-zh="显示">Display</span></a>
@@ -495,6 +516,23 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="hero-product">
     <img src="images/hero_annotated.webp" alt="POWER UP AI Agent Terminal — Annotated">
     <div class="slide-counter">01/08</div>
+  </div>
+</section>
+
+<!-- ========================================================
+     01.5 / LIFESTYLE MOMENT — Real hands, real voice
+     ======================================================== -->
+<section class="full-section" id="lifestyle" style="padding-top:120px;padding-bottom:120px">
+  <div class="lifestyle-wrap">
+    <div class="lifestyle-visual">
+      <img src="images/lifestyle_speaking.webp" alt="Developer speaking into POWER UP AI terminal" loading="lazy">
+    </div>
+    <div class="lifestyle-content">
+      <div class="detail-tag" data-en="In Use — Voice First" data-zh="使用场景 — 语音优先">In Use — Voice First</div>
+      <h2 data-en="Press. Speak.&lt;br&gt;&lt;em&gt;Ship.&lt;/em&gt;" data-zh="按下。说话。&lt;br&gt;&lt;em&gt;发布。&lt;/em&gt;">Press. Speak.<br><em>Ship.</em></h2>
+      <p data-en="No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee." data-zh="不用键盘、不用打开笔记本、不用切换到 Cursor 窗口。只需要你的声音、掌心的一块三角形设备，以及在你走路、通勤、喝咖啡时为你写代码的 Agent。">No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee.</p>
+      <div class="lifestyle-quote" data-en="&amp;ldquo;I used to lose my best ideas on my commute. Now I dictate them into POWER UP and the code is waiting for me when I sit down.&amp;rdquo;&lt;small&gt;— early beta user · Shanghai&lt;/small&gt;" data-zh="&amp;ldquo;我以前最好的想法都丢在通勤路上。现在我对着 POWER UP 说出来，等我到工位时代码已经写好了。&amp;rdquo;&lt;small&gt;— 内测用户 · 上海&lt;/small&gt;">&ldquo;I used to lose my best ideas on my commute. Now I dictate them into POWER UP and the code is waiting for me when I sit down.&rdquo;<small>— early beta user · Shanghai</small></div>
+    </div>
   </div>
 </section>
 
