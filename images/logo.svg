@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <radialGradient id="dot-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f3d9a8" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#d9ae60" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d9ae60" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
   <path d="M50 12 C53 12, 56 15, 82 58 C88 68, 88 72, 85 76 C82 80, 74 84, 50 84 C26 84, 18 80, 15 76 C12 72, 12 68, 18 58 C44 15, 47 12, 50 12Z" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
-  <circle cx="50" cy="55" r="6" fill="white"/>
+  <circle cx="50" cy="55" r="14" fill="url(#dot-glow)"/>
+  <circle cx="50" cy="55" r="6" fill="#d9ae60"/>
 </svg>
