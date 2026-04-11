@@ -68,12 +68,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .scroll-indicator{position:fixed;left:40px;bottom:60px;z-index:50;display:flex;flex-direction:column;align-items:center;gap:12px}
 .scroll-indicator span{writing-mode:vertical-rl;font-size:.7rem;letter-spacing:3px;color:var(--gray-500);font-family:var(--mono);text-transform:uppercase}
 .scroll-indicator .line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gray-500),transparent)}
-.scroll-dot{position:fixed;left:40px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:12px;align-items:center}
-.scroll-dot .dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--gray-600);transition:all .3s;cursor:pointer}
-.scroll-dot .dot.active{background:var(--white);border-color:var(--white)}
-.social-stack{position:fixed;right:20px;bottom:60px;z-index:50;display:flex;flex-direction:column;gap:16px}
-.social-stack a{color:var(--gray-600);font-size:.65rem;text-decoration:none;transition:color .3s;font-family:var(--mono)}
-.social-stack a:hover{color:var(--white)}
+/* Left-side section navigator — dot + label */
+.scroll-dot{position:fixed;left:36px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.scroll-dot .dot-item{display:flex;align-items:center;gap:14px;cursor:pointer;text-decoration:none;padding:2px 0}
+.scroll-dot .dot-item .dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);transition:all .4s cubic-bezier(.4,0,.2,1);flex-shrink:0;background:transparent}
+.scroll-dot .dot-item .label{font-family:var(--mono);font-size:.76rem;letter-spacing:1.8px;color:rgba(255,255,255,0.55);text-transform:uppercase;white-space:nowrap;opacity:0;transform:translateX(-8px);transition:all .4s cubic-bezier(.4,0,.2,1);font-weight:500;pointer-events:none}
+.scroll-dot .dot-item:hover .dot{border-color:rgba(255,255,255,0.7);transform:scale(1.2)}
+.scroll-dot .dot-item:hover .label{opacity:1;transform:translateX(0)}
+.scroll-dot .dot-item.active .dot{background:var(--white);border-color:var(--white);transform:scale(1.3);box-shadow:0 0 14px rgba(255,255,255,0.35)}
+.scroll-dot .dot-item.active .label{opacity:1;transform:translateX(0);color:var(--white);letter-spacing:2.2px}
 
 /* ===== HERO SECTION ===== */
 .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 60px;gap:0;overflow:hidden}
@@ -148,7 +151,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .detail-img{border-radius:16px;overflow:hidden;position:relative}
 .detail-img img{width:100%;display:block;filter:brightness(0.95)}
 .detail-content{padding:20px 0}
-.detail-tag{font-family:var(--mono);font-size:.76rem;letter-spacing:3px;text-transform:uppercase;color:var(--gray-300);margin-bottom:14px}
+.detail-tag{font-family:var(--mono);font-size:.84rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:22px;display:inline-block;padding:9px 20px;border:1px solid rgba(255,255,255,0.22);border-radius:50px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);font-weight:500}
 .detail-content h2{font-family:var(--serif);font-size:2.4rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:22px;line-height:1.2}
 .detail-content p{font-size:1.02rem;color:var(--gray-200);line-height:1.85;margin-bottom:18px;font-weight:300}
 .detail-content .highlight{color:var(--white);font-weight:400}
@@ -214,7 +217,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .detail-row,.detail-row.reverse{grid-template-columns:1fr;gap:40px;direction:ltr}
   .specs-grid{grid-template-columns:1fr}
   .feature-grid{grid-template-columns:1fr}
-  .scroll-indicator,.scroll-dot,.social-stack{display:none}
+  .scroll-indicator,.scroll-dot{display:none}
 }
 @media(max-width:768px){
   .hero-text h1{font-size:2.4rem}
@@ -226,8 +229,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 /* ===== AUDIENCE SECTION ===== */
 .audience-wrap{display:flex;flex-direction:column;gap:72px;max-width:1320px;margin:0 auto;width:100%}
 .audience-head{text-align:center;max-width:760px;margin:0 auto}
-.audience-head .detail-tag{font-family:var(--mono);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px;font-weight:500}
-.audience-head .detail-tag::before,.audience-head .detail-tag::after{content:'';display:inline-block;width:28px;height:1px;background:rgba(255,255,255,0.3)}
+.audience-head .detail-tag{font-family:var(--mono);font-size:.9rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:22px;display:inline-flex;align-items:center;gap:14px;font-weight:500;padding:10px 24px;border:1px solid rgba(255,255,255,0.22);border-radius:50px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px)}
+.audience-head .detail-tag::before,.audience-head .detail-tag::after{content:'';display:inline-block;width:20px;height:1px;background:rgba(255,255,255,0.4)}
 .audience-head h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:26px;line-height:1.15}
 .audience-head p{color:var(--gray-100);font-size:1.08rem;font-weight:300;line-height:1.85;max-width:680px;margin:0 auto}
 .audience-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:36px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);max-width:1100px;margin:0 auto;width:100%}
@@ -307,8 +310,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 /* ===== PAIN POINTS SECTION ===== */
 .pain-section{max-width:1280px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:60px}
 .pain-header{text-align:center;max-width:760px;margin:0 auto}
-.pain-header .detail-tag{font-family:var(--mono);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.72);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px;font-weight:500}
-.pain-header .detail-tag::before,.pain-header .detail-tag::after{content:'';display:inline-block;width:28px;height:1px;background:rgba(255,255,255,0.3)}
+.pain-header .detail-tag{font-family:var(--mono);font-size:.9rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:22px;display:inline-flex;align-items:center;gap:14px;font-weight:500;padding:10px 24px;border:1px solid rgba(255,255,255,0.22);border-radius:50px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px)}
+.pain-header .detail-tag::before,.pain-header .detail-tag::after{content:'';display:inline-block;width:20px;height:1px;background:rgba(255,255,255,0.4)}
 .pain-header h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:24px;line-height:1.15}
 .pain-header p{color:var(--gray-100);font-size:1.08rem;font-weight:300;line-height:1.85;max-width:680px;margin:0 auto}
 .pain-core-label,.pain-sub-label{text-align:center;font-family:var(--mono);font-size:.84rem;letter-spacing:3.5px;color:rgba(255,255,255,0.78);text-transform:uppercase;font-weight:500}
@@ -372,6 +375,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .feature-card p{font-size:.92rem}
   .detail-content p{font-size:.98rem}
   .hero-desc{font-size:.98rem}
+  .detail-tag{font-size:.74rem;padding:7px 16px;letter-spacing:2px}
+  .audience-head .detail-tag,.pain-header .detail-tag{font-size:.8rem;padding:8px 18px}
 }
 </style>
 </head>
@@ -408,19 +413,15 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   <div class="line"></div>
 </div>
 <div class="scroll-dot">
-  <div class="dot active"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-<div class="social-stack">
-  <a href="#">Wc</a>
-  <a href="#">Xhs</a>
-  <a href="#">Jk</a>
+  <a href="#hero" class="dot-item active" data-target="hero"><span class="dot"></span><span class="label" data-en="Home" data-zh="首页">Home</span></a>
+  <a href="#audience" class="dot-item" data-target="audience"><span class="dot"></span><span class="label" data-en="Audience" data-zh="人群画像">Audience</span></a>
+  <a href="#pain" class="dot-item" data-target="pain"><span class="dot"></span><span class="label" data-en="Pain Points" data-zh="核心痛点">Pain Points</span></a>
+  <a href="#about" class="dot-item" data-target="about"><span class="dot"></span><span class="label" data-en="Display" data-zh="显示">Display</span></a>
+  <a href="#form" class="dot-item" data-target="form"><span class="dot"></span><span class="label" data-en="Dual Mode" data-zh="双形态">Dual Mode</span></a>
+  <a href="#pairing" class="dot-item" data-target="pairing"><span class="dot"></span><span class="label" data-en="Pairing" data-zh="配对">Pairing</span></a>
+  <a href="#features" class="dot-item" data-target="features"><span class="dot"></span><span class="label" data-en="Features" data-zh="核心功能">Features</span></a>
+  <a href="#product" class="dot-item" data-target="product"><span class="dot"></span><span class="label" data-en="Structure" data-zh="结构">Structure</span></a>
+  <a href="#specs" class="dot-item" data-target="specs"><span class="dot"></span><span class="label" data-en="Specs" data-zh="规格">Specs</span></a>
 </div>
 
 <!-- ========================================================
@@ -816,7 +817,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
      ======================================================== -->
 <section class="full-section" id="pairing" style="flex-direction:column;gap:60px;padding-top:140px;padding-bottom:140px">
   <div style="text-align:center;max-width:760px">
-    <div style="font-family:var(--mono);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gray-300);margin-bottom:14px;font-weight:500" data-en="03 — Seamless Pairing" data-zh="03 — 无缝配对">03 — Seamless Pairing</div>
+    <div class="detail-tag" data-en="03 — Seamless Pairing" data-zh="03 — 无缝配对">03 — Seamless Pairing</div>
     <h2 style="font-family:var(--serif);font-size:2.6rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:18px;line-height:1.2" data-en="Instant connection.&lt;br&gt;Like AirPods." data-zh="即刻连接。&lt;br&gt;如 AirPods 般丝滑。">Instant connection.<br>Like AirPods.</h2>
     <p style="color:var(--gray-100);font-size:1.05rem;font-weight:300;line-height:1.85" data-en="Bring Power Up near your iPhone or Mac — a pairing card pops up instantly. One tap to connect. No settings, no Bluetooth menu, no friction. The same seamless experience you expect from Apple accessories." data-zh="将 Power Up 靠近 iPhone 或 Mac，配对卡片即刻弹出。轻点一下，即刻连接。无需设置、无需翻蓝牙菜单、零摩擦。和 Apple 配件一样的无缝体验。">Bring Power Up near your iPhone or Mac — a pairing card pops up instantly. One tap to connect. No settings, no Bluetooth menu, no friction. The same seamless experience you expect from Apple accessories.</p>
   </div>
@@ -843,6 +844,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
      ======================================================== -->
 <section class="full-section alt" id="features" style="flex-direction:column;gap:0;padding-top:120px;padding-bottom:120px">
   <div class="feature-strip">
+    <div style="text-align:center;margin-bottom:16px"><span class="detail-tag" data-en="04 — Core Features" data-zh="04 — 核心功能">04 — Core Features</span></div>
     <h2 data-en="Core Features" data-zh="核心功能">Core Features</h2>
     <div class="feature-overview" style="max-width:1200px;margin:0 auto 80px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06)">
       <img src="images/feature_overview.webp" alt="POWER UP Feature Overview — Front and Back Views" style="width:100%;display:block" loading="lazy">
@@ -887,7 +889,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
      ======================================================== -->
 <section class="full-section" id="product" style="flex-direction:column;gap:48px">
   <div style="text-align:center;max-width:760px">
-    <div style="font-family:var(--mono);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gray-300);margin-bottom:14px;font-weight:500" data-en="05 — Structure" data-zh="05 — 结构">05 — Structure</div>
+    <div class="detail-tag" data-en="05 — Structure" data-zh="05 — 结构">05 — Structure</div>
     <h2 style="font-family:var(--serif);font-size:2.6rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:18px;line-height:1.2" data-en="Seven precision layers" data-zh="七层精密布局">Seven precision layers</h2>
     <p style="color:var(--gray-100);font-size:1.05rem;font-weight:300;line-height:1.85" data-en="Every millimeter engineered. Aluminum alloy shell, custom triangular LiPo battery, ESP32-S3 brain, dual MEMS microphones — compressed into a palm-sized triangle." data-zh="每一毫米都经过精密设计。铝合金外壳、三角形定制锂聚合物电池、ESP32-S3 主控、双 MEMS 麦克风 — 浓缩于掌心大小的三角形中。">Every millimeter engineered. Aluminum alloy shell, custom triangular LiPo battery, ESP32-S3 brain, dual MEMS microphones — compressed into a palm-sized triangle.</p>
   </div>
@@ -902,6 +904,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 <section class="full-section alt" id="specs" style="flex-direction:column">
   <div class="specs-section">
     <div class="specs-header">
+      <span class="detail-tag" data-en="06 — Specifications" data-zh="06 — 技术规格">06 — Specifications</span>
       <h2 data-en="Specifications" data-zh="技术规格">Specifications</h2>
       <p data-en="Technical details for the discerning engineer" data-zh="为挑剔的工程师准备的技术参数">Technical details for the discerning engineer</p>
     </div>
@@ -992,10 +995,10 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 
 <!-- ===== SCROLL OBSERVER ===== -->
 <script>
-// Active nav link tracking
+// Active nav link & scroll-dot tracking
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
-const dots = document.querySelectorAll('.scroll-dot .dot');
+const dotItems = document.querySelectorAll('.scroll-dot .dot-item');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1003,6 +1006,9 @@ const observer = new IntersectionObserver((entries) => {
       const id = entry.target.getAttribute('id');
       navLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+      dotItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('data-target') === id);
       });
     }
   });
