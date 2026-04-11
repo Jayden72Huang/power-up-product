@@ -323,20 +323,19 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   to{opacity:1;transform:translateY(0)}
 }
 
-/* LEFT: Persona silhouette */
-.persona-visual{position:relative;width:100%;max-width:420px;height:500px;margin:0 auto}
-.persona-visual svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.persona-visual svg .outline{fill:none;stroke:rgba(255,255,255,0.24);stroke-width:1.5;stroke-linejoin:round}
-.persona-visual svg .line{stroke:rgba(255,255,255,0.14);stroke-width:1}
-.persona-visual svg .accent{fill:rgba(255,255,255,0.2)}
+/* LEFT: Persona photo — real lifestyle shot */
+.persona-visual{position:relative;width:100%;max-width:420px;aspect-ratio:3/4;margin:0 auto;border-radius:18px;overflow:hidden}
+.persona-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.persona-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 45%,transparent 50%,rgba(10,12,20,0.95) 100%);pointer-events:none}
+.persona-visual::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,12,20,0.6) 100%);pointer-events:none;z-index:1}
 
-/* Identity quote floating inside the head */
-.persona-quote{position:absolute;top:24%;left:50%;transform:translate(-50%,-50%);text-align:center;width:72%;font-family:var(--serif);font-style:italic;font-size:1.2rem;color:rgba(255,255,255,0.98);line-height:1.35;letter-spacing:-.3px;pointer-events:none}
-.persona-quote small{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;color:rgba(255,255,255,0.64);letter-spacing:1.8px;margin-top:14px;text-transform:uppercase;font-weight:500}
+/* Identity quote floating above the photo */
+.persona-quote{position:absolute;top:10%;left:6%;right:6%;text-align:left;font-family:var(--serif);font-style:italic;font-size:1.18rem;color:rgba(255,255,255,0.98);line-height:1.35;letter-spacing:-.3px;pointer-events:none;z-index:2;text-shadow:0 2px 20px rgba(0,0,0,0.9)}
+.persona-quote small{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;color:rgba(255,255,255,0.72);letter-spacing:1.8px;margin-top:10px;text-transform:uppercase;font-weight:500}
 
-/* Layer badge below the silhouette */
-.persona-badge{position:absolute;left:50%;bottom:-32px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;white-space:nowrap}
-.persona-badge .layer-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);font-weight:500}
+/* Layer badge overlaid at the bottom of the photo */
+.persona-badge{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:3px;white-space:nowrap;z-index:2;text-shadow:0 2px 12px rgba(0,0,0,0.8)}
+.persona-badge .layer-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:500}
 .persona-badge .layer-name{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--white);font-weight:400}
 
 /* RIGHT: Persona info */
@@ -594,20 +593,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <!-- Persona 01: Gen Z Indie Builders -->
       <div class="persona-row active" data-layer="1">
         <div class="persona-visual">
-          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <!-- Hoodie -->
-            <path class="outline" d="M 110 82 Q 200 32 290 82 L 328 146 Q 352 190 352 238 L 352 358 L 390 424 L 390 500 L 10 500 L 10 424 L 48 358 L 48 238 Q 48 190 72 146 Z"/>
-            <!-- Face circle -->
-            <circle class="outline" cx="200" cy="178" r="68" stroke-width="1.2"/>
-            <!-- Hoodie strings -->
-            <line class="line" x1="176" y1="252" x2="176" y2="348"/>
-            <line class="line" x1="224" y1="252" x2="224" y2="348"/>
-            <circle class="accent" cx="176" cy="350" r="3"/>
-            <circle class="accent" cx="224" cy="350" r="3"/>
-            <!-- hood seam -->
-            <path class="line" d="M 110 82 Q 200 116 290 82" fill="none"/>
-          </svg>
-          <div class="persona-quote" style="top:26%">
+          <img src="images/persona_01_gen_z.webp" alt="Gen Z Indie Builder using POWER UP" loading="lazy">
+          <div class="persona-quote">
             <span data-en="&amp;ldquo;I ship an app&lt;br&gt;every week.&amp;rdquo;" data-zh="&amp;ldquo;我一周&lt;br&gt;发一个 app。&amp;rdquo;">&ldquo;I ship an app<br>every week.&rdquo;</span>
             <small data-en="Gen Z · Indie Hacker" data-zh="Z 世代 · 独立开发者">Gen Z · Indie Hacker</small>
           </div>
@@ -647,20 +634,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <!-- Persona 02: Knowledge-class Pros -->
       <div class="persona-row" data-layer="2">
         <div class="persona-visual">
-          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <!-- Head -->
-            <circle class="outline" cx="200" cy="138" r="72"/>
-            <!-- Blazer body -->
-            <path class="outline" d="M 80 288 Q 148 228 200 228 Q 252 228 320 288 L 360 412 L 360 500 L 40 500 L 40 412 Z"/>
-            <!-- V collar -->
-            <path class="line" d="M 172 240 L 200 300 L 228 240"/>
-            <!-- Lapels -->
-            <line class="line" x1="142" y1="278" x2="184" y2="340"/>
-            <line class="line" x1="258" y1="278" x2="216" y2="340"/>
-            <!-- pocket line -->
-            <line class="line" x1="262" y1="360" x2="300" y2="360"/>
-          </svg>
-          <div class="persona-quote" style="top:22%">
+          <img src="images/persona_02_knowledge.webp" alt="Knowledge-class professional using POWER UP" loading="lazy">
+          <div class="persona-quote">
             <span data-en="&amp;ldquo;I just want to&lt;br&gt;automate my own work.&amp;rdquo;" data-zh="&amp;ldquo;我只想自动化&lt;br&gt;自己的工作。&amp;rdquo;">&ldquo;I just want to<br>automate my own work.&rdquo;</span>
             <small data-en="26-40 · Knowledge Pros" data-zh="26-40 · 高知中产">26-40 · Knowledge Pros</small>
           </div>
@@ -700,18 +675,8 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
       <!-- Persona 03: Newcomers -->
       <div class="persona-row" data-layer="3">
         <div class="persona-visual">
-          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <!-- Round head -->
-            <circle class="outline" cx="182" cy="160" r="80"/>
-            <!-- Body -->
-            <path class="outline" d="M 78 314 Q 140 260 182 260 Q 224 260 292 314 L 330 440 L 330 500 L 34 500 L 34 440 Z"/>
-            <!-- Question bubble -->
-            <circle class="outline" cx="332" cy="74" r="34"/>
-            <text x="332" y="90" text-anchor="middle" font-size="42" fill="rgba(255,255,255,0.5)" font-family="Playfair Display, serif" font-style="italic">?</text>
-            <line class="line" x1="304" y1="100" x2="282" y2="120"/>
-            <line class="line" x1="296" y1="108" x2="278" y2="126"/>
-          </svg>
-          <div class="persona-quote" style="top:26%;left:46%">
+          <img src="images/persona_03_newcomer.webp" alt="Zero-background newcomer discovering POWER UP" loading="lazy">
+          <div class="persona-quote">
             <span data-en="&amp;ldquo;I want to build&lt;br&gt;my own app too.&amp;rdquo;" data-zh="&amp;ldquo;我也想做&lt;br&gt;一个自己的 app。&amp;rdquo;">&ldquo;I want to build<br>my own app too.&rdquo;</span>
             <small data-en="Newcomers · Zero Background" data-zh="入门新手 · 零基础">Newcomers · Zero Background</small>
           </div>
