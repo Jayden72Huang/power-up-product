@@ -276,7 +276,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 .persona-tab:hover:not(.active) .tab-name{color:var(--gray-100)}
 
 /* 3 personas: left-right layout, panel switcher */
-.persona-stack{position:relative;max-width:1160px;margin:0 auto;width:100%;min-height:560px}
+.persona-stack{position:relative;max-width:1160px;margin:0 auto;width:100%;min-height:480px}
 .persona-row{display:none;grid-template-columns:minmax(340px,420px) 1fr;gap:72px;align-items:center;padding:24px 0;position:relative;animation:personaFade .5s ease}
 .persona-row.active{display:grid}
 @keyframes personaFade{
@@ -308,23 +308,20 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
 .persona-info h3{font-family:var(--serif);font-size:2.2rem;font-style:italic;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.15}
 .persona-info .sub-name{font-family:var(--mono);font-size:.82rem;color:rgba(255,255,255,0.7);letter-spacing:2px;text-transform:uppercase;margin-bottom:30px;display:block;font-weight:500}
 
-.persona-block{margin-bottom:26px}
-.persona-block-label{font-family:var(--mono);font-size:.76rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.62);margin-bottom:14px;display:flex;align-items:center;gap:10px;font-weight:500}
-.persona-block-label::before{content:'';width:22px;height:1px;background:rgba(255,255,255,0.38);display:inline-block}
-.persona-block-label.pain{color:rgba(255,138,138,0.92)}
-.persona-block-label.pain::before{background:rgba(255,107,107,0.7)}
-.persona-block ul{list-style:none;display:flex;flex-direction:column;gap:12px;padding:0}
-.persona-block li{font-size:1rem;color:var(--gray-100);line-height:1.65;display:flex;align-items:flex-start;gap:12px;padding:2px 0;font-weight:300}
-.persona-block li::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;margin-top:10px;background:rgba(255,255,255,0.5);flex-shrink:0}
-.persona-block li strong{color:var(--white);font-weight:500}
+.persona-block{margin-bottom:28px}
+.persona-block-label{font-family:var(--mono);font-size:.78rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.68);margin-bottom:16px;display:flex;align-items:center;gap:10px;font-weight:500}
+.persona-block-label::before{content:'';width:22px;height:1px;background:rgba(255,255,255,0.4);display:inline-block}
+.persona-block-label.pain{color:rgba(255,138,138,0.95)}
+.persona-block-label.pain::before{background:rgba(255,107,107,0.75)}
+.persona-block ul{list-style:none;display:flex;flex-direction:column;gap:14px;padding:0}
+.persona-block li{font-size:1rem;color:var(--gray-100);line-height:1.55;display:flex;align-items:flex-start;gap:12px;padding:0;font-weight:300}
+.persona-block li::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;margin-top:9px;background:rgba(255,255,255,0.5);flex-shrink:0}
+.persona-block li strong{color:var(--white);font-weight:500;margin-right:2px}
 
-/* Pain block: each item = bold headline + sub caption */
-.persona-block.pain-block ul{gap:18px}
-.persona-block.pain-block li{font-size:1.2rem;color:#ffa3a3;font-weight:500;line-height:1.3;letter-spacing:-.2px;padding:0;font-family:var(--serif);font-style:italic}
+/* Pain block: punchy one-liners only, no sub-caption */
+.persona-block.pain-block ul{gap:16px}
+.persona-block.pain-block li{font-size:1.2rem;color:#ffa3a3;font-weight:500;line-height:1.35;letter-spacing:-.2px;padding:0;font-family:var(--serif);font-style:italic}
 .persona-block.pain-block li::before{width:7px;height:7px;margin-top:10px;background:#ff6b6b;box-shadow:0 0 14px rgba(255,107,107,0.55)}
-.persona-block.pain-block li em{display:block;font-style:normal;font-family:var(--sans);font-size:.88rem;color:rgba(255,255,255,0.68);font-weight:300;margin-top:6px;letter-spacing:.2px;line-height:1.6}
-
-.persona-demo{font-family:var(--mono);font-size:.76rem;color:rgba(255,255,255,0.58);letter-spacing:.8px;padding-top:20px;margin-top:10px;border-top:1px dashed rgba(255,255,255,0.1);line-height:1.7;text-transform:uppercase;font-weight:500}
 
 /* Closing narrative — the unifying sentence */
 .audience-closing{text-align:center;max-width:780px;margin:0 auto;padding:46px 32px 0;border-top:1px dashed rgba(255,255,255,0.12);position:relative}
@@ -566,28 +563,26 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
             <span class="num" data-en="01 / CORE" data-zh="01 / 核心圈">01 / CORE</span>
             <span class="line-h"></span>
           </div>
-          <h3 data-en="The builders who&lt;br&gt;&lt;em&gt;ship weekly.&lt;/em&gt;" data-zh="一群&lt;br&gt;&lt;em&gt;每周发产品&lt;/em&gt; 的建设者。">The builders who<br><em>ship weekly.</em></h3>
-          <span class="sub-name" data-en="22–28 YO · Indie Hackers · Already paying users" data-zh="22–28 岁 · 独立开发者 · 已付费用户">22–28 YO · Indie Hackers · Already paying users</span>
+          <h3 data-en="The weekly &lt;em&gt;shippers.&lt;/em&gt;" data-zh="每周发产品的 &lt;em&gt;建设者。&lt;/em&gt;">The weekly <em>shippers.</em></h3>
+          <span class="sub-name" data-en="22–28 YO · Indie Hackers · Paying users" data-zh="22–28 岁 · 独立开发者 · 已付费">22–28 YO · Indie Hackers · Paying users</span>
 
           <div class="persona-block">
-            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <div class="persona-block-label" data-en="Profile" data-zh="他们是谁">Profile</div>
             <ul>
-              <li data-en="&lt;strong&gt;Indie Hackers&lt;/strong&gt; building MVPs weekly on Cursor, Claude Code, and Lovable" data-zh="&lt;strong&gt;独立开发者&lt;/strong&gt;，每周在 Cursor / Claude Code / Lovable 上构建 MVP"><strong>Indie Hackers</strong> building MVPs weekly on Cursor, Claude Code, and Lovable</li>
-              <li data-en="Already paying &lt;strong&gt;$20-200/month&lt;/strong&gt; for AI tools. Hooked on voice-first workflows" data-zh="每月为 AI 工具付费 &lt;strong&gt;$20-200&lt;/strong&gt;，沉迷语音优先的工作流"><strong>$20-200/month</strong> already spent on AI tools. Hooked on voice-first workflows</li>
-              <li data-en="Live on Twitter/X, GitHub, V2EX, Product Hunt. Ship in public, grind at hackathons" data-zh="活跃在 Twitter/X、GitHub、V2EX、Product Hunt，在黑客松现场开发">Live on Twitter/X, GitHub, V2EX, Product Hunt. Ship in public, grind at hackathons</li>
+              <li data-en="&lt;strong&gt;Ship weekly&lt;/strong&gt; · Cursor, Claude Code, Lovable" data-zh="&lt;strong&gt;每周发 MVP&lt;/strong&gt; · Cursor / Claude Code / Lovable"><strong>Ship weekly</strong> · Cursor, Claude Code, Lovable</li>
+              <li data-en="&lt;strong&gt;$20–200/mo&lt;/strong&gt; on AI tools · voice-first" data-zh="&lt;strong&gt;月付 $20–200&lt;/strong&gt; · 沉迷语音工作流"><strong>$20–200/mo</strong> on AI tools · voice-first</li>
+              <li data-en="&lt;strong&gt;Live on&lt;/strong&gt; X · GitHub · Hackathons" data-zh="&lt;strong&gt;活跃于&lt;/strong&gt; X · GitHub · 黑客松"><strong>Live on</strong> X · GitHub · Hackathons</li>
             </ul>
           </div>
 
           <div class="persona-block pain-block">
-            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <div class="persona-block-label pain" data-en="The Wall" data-zh="撞上的墙">The Wall</div>
             <ul>
-              <li data-en="Typing can't catch the brain.&lt;em&gt;Thinks at 150 wpm, types at 40.&lt;/em&gt;" data-zh="打字，追不上脑子。&lt;em&gt;思考 150 wpm，手指 40 wpm。&lt;/em&gt;">Typing can't catch the brain.<em>Thinks at 150 wpm, types at 40.</em></li>
-              <li data-en="No laptop = no work.&lt;em&gt;Cursor doesn't exist on phone or iPad.&lt;/em&gt;" data-zh="没电脑，寸步难行。&lt;em&gt;Cursor 在手机和 iPad 上都不存在。&lt;/em&gt;">No laptop = no work.<em>Cursor doesn't exist on phone or iPad.</em></li>
-              <li data-en="One ping shatters the flow.&lt;em&gt;WeChat, Slack, email — the AI loop restarts.&lt;/em&gt;" data-zh="一个通知，心流全碎。&lt;em&gt;微信、Slack、邮件，AI 循环从零重启。&lt;/em&gt;">One ping shatters the flow.<em>WeChat, Slack, email — the AI loop restarts.</em></li>
+              <li data-en="Typing can't catch the brain." data-zh="打字，追不上脑子。">Typing can't catch the brain.</li>
+              <li data-en="No laptop, no work." data-zh="没电脑，寸步难行。">No laptop, no work.</li>
+              <li data-en="One ping shatters the flow." data-zh="一个通知，心流全碎。">One ping shatters the flow.</li>
             </ul>
           </div>
-
-          <div class="persona-demo" data-en="22-28 YO · $20/MO CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS" data-zh="22-28 岁 · $20/月 CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS">22-28 YO · $20/MO CURSOR PRO · GITHUB · TWITTER · V2EX · DISCORD · HACKERNEWS</div>
         </div>
       </div>
 
@@ -621,28 +616,26 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
             <span class="num" data-en="02 / EXPANDING" data-zh="02 / 扩张圈">02 / EXPANDING</span>
             <span class="line-h"></span>
           </div>
-          <h3 data-en="The pros who want&lt;br&gt;&lt;em&gt;to bypass the backlog.&lt;/em&gt;" data-zh="一群想要&lt;br&gt;&lt;em&gt;跳过开发排期&lt;/em&gt; 的专业人士。">The pros who want<br><em>to bypass the backlog.</em></h3>
-          <span class="sub-name" data-en="28–40 YO · PM, Design Lead, Dept Head · Tier-1 city" data-zh="28–40 岁 · PM/设计/部门主管 · 一线城市">28–40 YO · PM, Design Lead, Dept Head · Tier-1 city</span>
+          <h3 data-en="Bypass &lt;em&gt;the backlog.&lt;/em&gt;" data-zh="跳过开发 &lt;em&gt;排期的人。&lt;/em&gt;">Bypass <em>the backlog.</em></h3>
+          <span class="sub-name" data-en="28–40 YO · PM, Design, Dept Heads · Tier-1" data-zh="28–40 岁 · PM/设计/部门主管 · 一线">28–40 YO · PM, Design, Dept Heads · Tier-1</span>
 
           <div class="persona-block">
-            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <div class="persona-block-label" data-en="Profile" data-zh="他们是谁">Profile</div>
             <ul>
-              <li data-en="&lt;strong&gt;Product managers, designers, department heads&lt;/strong&gt; — high-income, high-agency, but not full-time coders" data-zh="&lt;strong&gt;产品经理、设计师、部门主管&lt;/strong&gt;——高收入、高决策权，但不是全职码农"><strong>Product managers, designers, department heads</strong> — high-income, high-agency, but not full-time coders</li>
-              <li data-en="Building &lt;strong&gt;side projects and internal tools&lt;/strong&gt; to automate their own workflow" data-zh="构建 &lt;strong&gt;副业产品和内部工具&lt;/strong&gt;，自动化自己的工作流"><strong>Side projects and internal tools</strong> — automating the pain out of their own job</li>
-              <li data-en="Tier-1 city, core family, household income ¥300-800K. Live on 即刻, 小红书, 知乎" data-zh="一线城市，核心家庭，家庭年收入 30-80 万。活跃在即刻、小红书、知乎">Tier-1 city, core family, ¥300-800K household. Live on 即刻, 小红书, 知乎</li>
+              <li data-en="&lt;strong&gt;PMs, designers, dept heads&lt;/strong&gt; · high-agency" data-zh="&lt;strong&gt;产品、设计、部门主管&lt;/strong&gt; · 高决策权"><strong>PMs, designers, dept heads</strong> · high-agency</li>
+              <li data-en="&lt;strong&gt;Side projects&lt;/strong&gt; to automate their own job" data-zh="&lt;strong&gt;做副业&lt;/strong&gt; · 自动化自己的工作流"><strong>Side projects</strong> to automate their own job</li>
+              <li data-en="&lt;strong&gt;¥300–800K income&lt;/strong&gt; · 即刻, 小红书, 知乎" data-zh="&lt;strong&gt;年入 30–80 万&lt;/strong&gt; · 即刻、小红书、知乎"><strong>¥300–800K income</strong> · 即刻, 小红书, 知乎</li>
             </ul>
           </div>
 
           <div class="persona-block pain-block">
-            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <div class="persona-block-label pain" data-en="The Wall" data-zh="撞上的墙">The Wall</div>
             <ul>
-              <li data-en="No time to learn code.&lt;em&gt;Only commutes, lunch breaks, after-kids fragments.&lt;/em&gt;" data-zh="没时间学编程。&lt;em&gt;只有通勤、午休、哄娃睡后的碎片时间。&lt;/em&gt;">No time to learn code.<em>Only commutes, lunch breaks, after-kids fragments.</em></li>
-              <li data-en="Dev backlog is 3 weeks.&lt;em&gt;Every automation idea dies in the queue.&lt;/em&gt;" data-zh="排期要等 3 周。&lt;em&gt;每个自动化想法都死在排期里。&lt;/em&gt;">Dev backlog is 3 weeks.<em>Every automation idea dies in the queue.</em></li>
-              <li data-en="Setup is a dead wall.&lt;em&gt;Node, proxy, API, English errors — quit before prompt one.&lt;/em&gt;" data-zh="环境配置是死墙。&lt;em&gt;Node、代理、API、英文报错，在第一条 prompt 前就放弃。&lt;/em&gt;">Setup is a dead wall.<em>Node, proxy, API, English errors — quit before prompt one.</em></li>
+              <li data-en="No time to learn code." data-zh="没时间学编程。">No time to learn code.</li>
+              <li data-en="Dev backlog is 3 weeks." data-zh="排期要等三周。">Dev backlog is 3 weeks.</li>
+              <li data-en="Setup is a dead wall." data-zh="环境配置，是一堵死墙。">Setup is a dead wall.</li>
             </ul>
           </div>
-
-          <div class="persona-demo" data-en="28-40 YO · TIER-1 CITY · CORE FAMILY · ¥300-800K · 即刻 · 小红书 · 知乎" data-zh="28-40 岁 · 一线城市 · 核心家庭 · ¥300-800K · 即刻 · 小红书 · 知乎">28-40 YO · TIER-1 CITY · CORE FAMILY · ¥300-800K · 即刻 · 小红书 · 知乎</div>
         </div>
       </div>
 
@@ -674,28 +667,26 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
             <span class="num" data-en="03 / NEWCOMERS" data-zh="03 / 入门圈">03 / NEWCOMERS</span>
             <span class="line-h"></span>
           </div>
-          <h3 data-en="The newcomers who&lt;br&gt;&lt;em&gt;dream of shipping one.&lt;/em&gt;" data-zh="一群&lt;br&gt;&lt;em&gt;梦想拥有自己 app&lt;/em&gt; 的新手。">The newcomers who<br><em>dream of shipping one.</em></h3>
-          <span class="sub-name" data-en="18–35 YO · 55% female · Xiaohongshu-pilled · Zero code" data-zh="18–35 岁 · 55% 女性 · 小红书种草 · 零代码">18–35 YO · 55% female · Xiaohongshu-pilled · Zero code</span>
+          <h3 data-en="Dream of &lt;em&gt;shipping one.&lt;/em&gt;" data-zh="梦想发出 &lt;em&gt;第一个 App。&lt;/em&gt;">Dream of <em>shipping one.</em></h3>
+          <span class="sub-name" data-en="18–35 YO · 55% female · Zero code" data-zh="18–35 岁 · 55% 女性 · 零代码">18–35 YO · 55% female · Zero code</span>
 
           <div class="persona-block">
-            <div class="persona-block-label" data-en="Who they are" data-zh="他们是谁">Who they are</div>
+            <div class="persona-block-label" data-en="Profile" data-zh="他们是谁">Profile</div>
             <ul>
-              <li data-en="&lt;strong&gt;Liberal arts grads, moms, ops staff, career changers&lt;/strong&gt; — got Xiaohongshu-pilled by vibe coding" data-zh="&lt;strong&gt;文科生、宝妈、运营、转行人士&lt;/strong&gt;——被小红书种草"><strong>Liberal arts grads, moms, ops, career changers</strong> — Xiaohongshu-pilled by vibe coding</li>
-              <li data-en="Paid &lt;strong&gt;9.9-99 RMB&lt;/strong&gt; for a course, watched Bilibili tutorials, ready to try the first prompt" data-zh="花 &lt;strong&gt;9.9-99 元&lt;/strong&gt; 买课，刷完 B 站教程，准备写第一条 prompt">Paid <strong>9.9-99 RMB</strong> for a course, binged Bilibili tutorials, ready to prompt</li>
-              <li data-en="&lt;strong&gt;FOMO-driven&lt;/strong&gt;, don't want to be left behind in the AI era. Price-sensitive but motivated" data-zh="&lt;strong&gt;FOMO 驱动&lt;/strong&gt;，不想在 AI 时代掉队。对价格敏感，但学习动力强"><strong>FOMO-driven</strong>, refusing to fall behind in the AI era. Price-sensitive but highly motivated</li>
+              <li data-en="&lt;strong&gt;Liberal arts, moms, career changers&lt;/strong&gt;" data-zh="&lt;strong&gt;文科生、宝妈、转行人士&lt;/strong&gt;"><strong>Liberal arts, moms, career changers</strong></li>
+              <li data-en="&lt;strong&gt;9.9–99 RMB courses&lt;/strong&gt; · Bilibili tutorials" data-zh="&lt;strong&gt;9.9–99 元买课&lt;/strong&gt; · 刷 B 站教程"><strong>9.9–99 RMB courses</strong> · Bilibili tutorials</li>
+              <li data-en="&lt;strong&gt;FOMO-driven&lt;/strong&gt; · price-sensitive, motivated" data-zh="&lt;strong&gt;FOMO 驱动&lt;/strong&gt; · 价格敏感，动力十足"><strong>FOMO-driven</strong> · price-sensitive, motivated</li>
             </ul>
           </div>
 
           <div class="persona-block pain-block">
-            <div class="persona-block-label pain" data-en="But they hit a wall" data-zh="但他们撞上一堵墙">But they hit a wall</div>
+            <div class="persona-block-label pain" data-en="The Wall" data-zh="撞上的墙">The Wall</div>
             <ul>
-              <li data-en="Don't know where to start.&lt;em&gt;Cursor opens, blank editor, total freeze.&lt;/em&gt;" data-zh="不知从哪开始。&lt;em&gt;Cursor 打开，空编辑器，完全懵住。&lt;/em&gt;">Don't know where to start.<em>Cursor opens, blank editor, total freeze.</em></li>
-              <li data-en="English errors = instant quit.&lt;em&gt;Node, npm, Git — all alien incantations.&lt;/em&gt;" data-zh="英文报错就放弃。&lt;em&gt;Node、npm、Git 全是外星咒语。&lt;/em&gt;">English errors = instant quit.<em>Node, npm, Git — all alien incantations.</em></li>
-              <li data-en="Quit before line one.&lt;em&gt;Setup hell kills them before the first prompt.&lt;/em&gt;" data-zh="第一行前就放弃。&lt;em&gt;环境配置直接把他们挡在门外。&lt;/em&gt;">Quit before line one.<em>Setup hell kills them before the first prompt.</em></li>
+              <li data-en="Don't know where to start." data-zh="不知道从哪里开始。">Don't know where to start.</li>
+              <li data-en="English errors = instant quit." data-zh="一看英文报错就放弃。">English errors = instant quit.</li>
+              <li data-en="Quit before line one." data-zh="写第一行前就放弃。">Quit before line one.</li>
             </ul>
           </div>
-
-          <div class="persona-demo" data-en="18-35 YO · 55% FEMALE · XIAOHONGSHU · DOUYIN · BILIBILI · 9.9 RMB COURSES" data-zh="18-35 岁 · 55% 女性 · 小红书 · 抖音 · B 站 · 9.9 元课">18-35 YO · 55% FEMALE · XIAOHONGSHU · DOUYIN · BILIBILI · 9.9 RMB COURSES</div>
         </div>
       </div>
 
