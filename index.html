@@ -96,15 +96,18 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23grain)' opacity='0.8'/%3E%3C/svg%3E")}
 
 /* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(12,12,15,0.6)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:flex;align-items:center;backdrop-filter:blur(20px);background:rgba(12,12,15,0.6)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-brand svg{width:24px;height:24px}
 .nav-brand span{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--white);letter-spacing:2px;text-transform:uppercase}
+.nav-docs{display:flex;align-items:center;gap:20px;margin-left:16px;padding-left:16px;border-left:1px solid rgba(255,255,255,0.15)}
+.nav-docs a{color:var(--gray-300);font-size:.78rem;font-weight:400;text-decoration:none;letter-spacing:.3px;transition:color .3s;white-space:nowrap}
+.nav-docs a:hover{color:var(--white)}
 .nav-links{display:flex;gap:32px}
 .nav-links a{color:var(--gray-200);font-size:.9rem;font-weight:400;text-decoration:none;letter-spacing:.5px;transition:color .3s;position:relative}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
 .nav-links a.active::after{content:'';position:absolute;bottom:-6px;left:0;right:0;height:1px;background:var(--white)}
-.nav-right{display:flex;align-items:center;gap:40px}
+.nav-right{display:flex;align-items:center;gap:40px;margin-left:auto}
 .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid var(--glass-border);border-radius:50px;overflow:hidden;cursor:pointer;user-select:none}
 .lang-toggle span{padding:5px 14px;font-size:.7rem;font-family:var(--mono);letter-spacing:1px;color:var(--gray-500);transition:all .3s}
 .lang-toggle span.active{background:rgba(255,255,255,0.08);color:var(--white)}
@@ -131,7 +134,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .hero-text h1 em{font-style:italic;display:block;color:var(--gray-200)}
 .hero-desc{font-size:1.02rem;color:var(--gray-200);max-width:440px;line-height:1.85;margin-bottom:32px;font-weight:300}
 /* Waitlist CTA */
-.hero-cta{display:flex;align-items:center;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.hero-cta{display:flex;align-items:center;gap:20px;margin-bottom:18px;flex-wrap:wrap}
+.hero-team{font-size:1rem;color:var(--gray-200);line-height:1.7;max-width:580px;font-weight:600;letter-spacing:.5px}
+.hero-team strong{color:var(--gray-100);font-weight:500}
 .btn-waitlist{padding:13px 36px;border:1px solid rgba(255,255,255,0.25);border-radius:50px;color:var(--white);font-size:.85rem;font-family:var(--mono);letter-spacing:1px;text-decoration:none;transition:all .3s;cursor:pointer;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);display:inline-block}
 .btn-waitlist:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4)}
 .waitlist-count{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--gray-200)}
@@ -281,6 +286,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .feature-card h3{font-size:1.18rem;color:var(--white);margin-bottom:12px;font-weight:500;line-height:1.3}
 .feature-card p{font-size:.96rem;color:var(--gray-300);line-height:1.75;font-weight:300}
 
+/* ===== TEAM SECTION ===== */
+.team-section{max-width:1280px;margin:0 auto;width:100%}
+.team-header{text-align:center;margin-bottom:64px}
+.team-header h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:0;line-height:1.15}
+.team-header h2 em{font-style:italic;color:var(--gray-200)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.team-card{text-align:center}
+.team-photo{width:180px;height:180px;margin:0 auto 20px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.08)}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.team-card h3{font-family:var(--mono);font-size:1.1rem;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:6px}
+.team-role{font-family:var(--mono);font-size:.78rem;color:rgba(100,108,255,0.8);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.team-bio{color:var(--gray-200);font-size:.88rem;line-height:1.7;font-weight:300;max-width:280px;margin:0 auto}
+@media(max-width:1024px){
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:48px}
+}
+@media(max-width:768px){
+  .team-grid{grid-template-columns:1fr;gap:48px}
+  .team-header h2{font-size:2rem}
+}
+
 /* ===== CTA SECTION ===== */
 .cta-section{text-align:center;max-width:960px;margin:0 auto}
 .cta-section h2{font-family:var(--serif);font-size:5rem;font-weight:400;color:var(--white);margin-bottom:48px;line-height:1.22;font-style:normal;letter-spacing:-.01em}
@@ -324,6 +349,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .hero-stats{flex-direction:column;align-items:center}
   .nav-links{gap:20px}
   .nav-links a{font-size:.75rem}
+  .nav-docs{display:none}
 }
 
 /* ===== LIFESTYLE MOMENT ===== */
@@ -343,6 +369,37 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .lifestyle-content{text-align:center;padding:0}
   .lifestyle-content p,.lifestyle-quote{max-width:100%;margin-left:auto;margin-right:auto}
   .lifestyle-content h2{font-size:2.2rem}
+}
+
+/* ===== PRODUCT VIDEO ===== */
+.video-section{max-width:70vw;margin:0 auto;text-align:center}
+.video-header{margin-bottom:48px}
+.video-header h2{font-family:var(--serif);font-size:2.6rem;font-weight:400;font-style:italic;color:var(--white);line-height:1.15;margin-bottom:0;letter-spacing:-.5px}
+.video-header h2 em{font-style:italic;color:var(--gray-200)}
+.video-container{position:relative;width:100%;border-radius:16px;overflow:hidden;box-shadow:0 0 80px rgba(100,108,255,0.08),0 2px 40px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);background:#0a0a0a}
+.video-container video{width:100%;display:block;background:#0a0a0a}
+@media(max-width:768px){
+  .video-header h2{font-size:2rem}
+  .video-section{max-width:100%}
+}
+
+/* ===== JOYAI 5 CAPABILITIES ===== */
+.joyai-section{max-width:1280px;margin:0 auto;width:100%}
+.joyai-header{text-align:center;margin-bottom:64px}
+.joyai-header h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:16px;line-height:1.15}
+.joyai-header h2 em{font-style:italic;color:var(--gray-200)}
+.joyai-header p{color:var(--gray-300);font-size:1.05rem;font-weight:300}
+.joyai-grid{display:flex;flex-direction:column;gap:24px}
+.joyai-card{padding:36px 40px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);transition:border-color .3s,background .3s}
+.joyai-card:hover{border-color:rgba(100,108,255,0.25);background:rgba(100,108,255,0.04)}
+.joyai-card-title{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.joyai-num{font-family:var(--mono);font-size:.8rem;color:rgba(100,108,255,0.7);letter-spacing:2px;font-weight:600}
+.joyai-card h3{font-family:var(--mono);font-size:.95rem;font-weight:700;color:var(--white);letter-spacing:1.5px;text-transform:uppercase}
+.joyai-card p{color:var(--gray-100);font-size:1rem;line-height:1.85;font-weight:300;max-width:960px}
+@media(max-width:768px){
+  .joyai-header h2{font-size:2rem}
+  .joyai-card{padding:24px}
+  .joyai-card p{font-size:.9rem}
 }
 
 /* ===== AUDIENCE SECTION ===== */
@@ -583,6 +640,11 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="nav-dot-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f3d9a8" stop-opacity="0.85"/><stop offset="60%" stop-color="#d9ae60" stop-opacity="0.25"/><stop offset="100%" stop-color="#d9ae60" stop-opacity="0"/></radialGradient></defs><path d="M50 12 C53 12, 56 15, 82 58 C88 68, 88 72, 85 76 C82 80, 74 84, 50 84 C26 84, 18 80, 15 76 C12 72, 12 68, 18 58 C44 15, 47 12, 50 12Z" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="55" r="14" fill="url(#nav-dot-glow)"/><circle cx="50" cy="55" r="6" fill="#d9ae60"/></svg>
     <span>PowCoder</span>
   </a>
+  <div class="nav-docs">
+    <a href="https://my.feishu.cn/docx/R1zzdbGeBoaWRpxAUnkckQQSnah?from=from_copylink" target="_blank" data-en="Product Doc" data-zh="产品文档">产品文档</a>
+    <a href="https://my.feishu.cn/docx/DGXpdCdG3o7uf6xrb4Fc3XMAn5c" target="_blank" data-en="Tech Doc" data-zh="技术文档">技术文档</a>
+    <a href="https://my.feishu.cn/docx/FrXVdEhFRos3kkxIvXrcOfIJnLe?from=from_copylink" target="_blank" data-en="Feasibility & Biz" data-zh="可行性分析&商业化">可行性分析&商业化</a>
+  </div>
   <div class="nav-right">
     <div class="nav-links">
       <a href="#hero" class="active" data-en="Home" data-zh="首页">Home</a>
@@ -593,8 +655,10 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
       <a href="#form" data-en="Form" data-zh="形态">Form</a>
       <a href="#pairing" data-en="Pairing" data-zh="连接">Pairing</a>
       <a href="#features" data-en="Features" data-zh="功能设计">Features</a>
+      <a href="#joyai" data-en="AI Power" data-zh="AI能力">AI Power</a>
       <a href="#product" data-en="Structure" data-zh="结构">Structure</a>
       <a href="#specs" data-en="Specs" data-zh="规格">Specs</a>
+      <a href="#team" data-en="Team" data-zh="团队">Team</a>
       <a href="#cta" data-en="Try" data-zh="试用">Try</a>
     </div>
     <div class="lang-toggle" id="langToggle">
@@ -618,8 +682,10 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
   <a href="#form" class="dot-item" data-target="form"><span class="dot"></span><span class="label" data-en="Dual Mode" data-zh="双形态">Dual Mode</span></a>
   <a href="#pairing" class="dot-item" data-target="pairing"><span class="dot"></span><span class="label" data-en="Pairing" data-zh="配对">Pairing</span></a>
   <a href="#features" class="dot-item" data-target="features"><span class="dot"></span><span class="label" data-en="Features" data-zh="功能设计">Features</span></a>
+  <a href="#joyai" class="dot-item" data-target="joyai"><span class="dot"></span><span class="label" data-en="AI Power" data-zh="AI能力">AI Power</span></a>
   <a href="#product" class="dot-item" data-target="product"><span class="dot"></span><span class="label" data-en="Structure" data-zh="结构">Structure</span></a>
   <a href="#specs" class="dot-item" data-target="specs"><span class="dot"></span><span class="label" data-en="Specs" data-zh="规格">Specs</span></a>
+  <a href="#team" class="dot-item" data-target="team"><span class="dot"></span><span class="label" data-en="Team" data-zh="团队">Team</span></a>
   <a href="#cta" class="dot-item" data-target="cta"><span class="dot"></span><span class="label" data-en="Try" data-zh="试用">Try</span></a>
 </div>
 
@@ -637,6 +703,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
         <span><span class="count-num" id="waitlistCount">189</span> <span data-en="people waiting" data-zh="人已加入">people waiting</span></span>
       </div>
     </div>
+    <div class="hero-team" data-en="JD JoyInside 1st Innovation &amp; Entrepreneurship Competition — Explorer Track (PowerX Team)" data-zh="京东 JoyInside 首届创新创业大赛 —— 探索者赛道（PowerX 团队）">京东 JoyInside 首届创新创业大赛 —— 探索者赛道（PowerX 团队）</div>
   </div>
   <div class="hero-product">
     <img src="images/hero_annotated.webp" alt="PowCoder AI Agent Terminal — Annotated">
@@ -657,6 +724,23 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
       <h2 data-en="Press. Speak.&lt;br&gt;&lt;em&gt;Ship.&lt;/em&gt;" data-zh="按下。说话。&lt;br&gt;&lt;em&gt;发布。&lt;/em&gt;">Press. Speak.<br><em>Ship.</em></h2>
       <p data-en="No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee." data-zh="不用键盘、不用打开笔记本、不用切换到 Cursor 窗口。只需要你的声音、掌心的一块三角形设备，以及在你走路、通勤、喝咖啡时为你写代码的 Agent。">No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee.</p>
       <div class="lifestyle-quote" data-en="&amp;ldquo;I used to lose my best ideas on my commute. Now I dictate them into PowCoder and the code is waiting for me when I sit down.&amp;rdquo;&lt;small&gt;— early beta user · Shanghai&lt;/small&gt;" data-zh="&amp;ldquo;我以前最好的想法都丢在通勤路上。现在我对着 PowCoder 说出来，等我到工位时代码已经写好了。&amp;rdquo;&lt;small&gt;— 内测用户 · 上海&lt;/small&gt;">&ldquo;I used to lose my best ideas on my commute. Now I dictate them into PowCoder and the code is waiting for me when I sit down.&rdquo;<small>— early beta user · Shanghai</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     01b / PRODUCT VIDEO
+     ======================================================== -->
+<section class="full-section" id="video" style="padding-top:80px;padding-bottom:80px">
+  <div class="video-section">
+    <div class="video-header">
+      <div class="detail-tag" data-en="Product Video" data-zh="产品视频">Product Video</div>
+      <h2 data-en="See PowCoder's &lt;em&gt;product story.&lt;/em&gt;" data-zh="看看 PowCoder 的&lt;em&gt;产品故事。&lt;/em&gt;">看看 PowCoder 的<em>产品故事。</em></h2>
+    </div>
+    <div class="video-container">
+      <video controls playsinline preload="metadata" onloadeddata="this.parentElement.classList.add('loaded')">
+        <source src="https://pub-cf9cba7cafd74715abc7e9736112ceb4.r2.dev/PowCoder_Video.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -1027,6 +1111,41 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
 </section>
 
 <!-- ========================================================
+     04b / JOYINSIDE 5 AI CAPABILITIES
+     ======================================================== -->
+<section class="full-section" id="joyai" style="padding-top:120px;padding-bottom:120px">
+  <div class="joyai-section">
+    <div class="joyai-header">
+      <div class="detail-tag" data-en="AI Power" data-zh="AI 能力">AI 能力</div>
+      <h2 data-en="Five AI superpowers,&lt;br&gt;&lt;em&gt;one platform.&lt;/em&gt;" data-zh="五大 AI 能力加持">五大 AI 能力加持</h2>
+      <p data-en="World-class AI stack validated by JD's JoyInside platform" data-zh="京东 JoyInside 平台验证的世界级 AI 技术栈">京东 JoyInside 平台验证的世界级 AI 技术栈</p>
+    </div>
+    <div class="joyai-grid">
+      <div class="joyai-card">
+        <div class="joyai-card-title"><div class="joyai-num">01</div><h3 data-en="Understands You — Context-Aware ASR" data-zh="听得懂 — Context-Aware ASR">听得懂 — Context-Aware ASR</h3></div>
+        <p data-en="Context-aware speech recognition with full-duplex interaction, no wake word needed, precise endpoint detection. Press the MIC key to speak, the system auto-detects sentence boundaries, supports dialects and background noise. Optimized via Soulmate Server for best recognition accuracy." data-zh="上下文感知语音识别，全双工交互无需唤醒词，精准端点检测。PowCoder 用户按 MIC 键即可语音输入，系统自动判断语句边界，支持方言与背景噪音。通过 Soulmate Server 声学优化获得最佳识别率。">上下文感知语音识别，全双工交互无需唤醒词，精准端点检测。PowCoder 用户按 MIC 键即可语音输入，系统自动判断语句边界，支持方言与背景噪音。通过 Soulmate Server 声学优化获得最佳识别率。</p>
+      </div>
+      <div class="joyai-card">
+        <div class="joyai-card-title"><div class="joyai-num">02</div><h3 data-en="Speaks Well — Live TTS + Multilingual" data-zh="说得好 — Live TTS + 多语种">说得好 — Live TTS + 多语种</h3></div>
+        <p data-en="Real-time TTS powered by large models, supporting 7 languages with precise pronunciation. Seven emotional expressions (happy, gentle, serious, neutral, surprised, sad, angry), auto-selecting tone based on dialog context. Voice cloning with just 3-5 audio samples." data-zh="实时 TTS 大模型，支持中/英/日/韩等七大语言精准发音。七大情绪灵活表现（开心、温柔、严肃、中立、惊讶、悲伤、愤怒），根据对话语境自动选择语调。支持个人声音克隆，仅需 3-5 个音频样本。">实时 TTS 大模型，支持中/英/日/韩等七大语言精准发音。七大情绪灵活表现（开心、温柔、严肃、中立、惊讶、悲伤、愤怒），根据对话语境自动选择语调。支持个人声音克隆，仅需 3-5 个音频样本。</p>
+      </div>
+      <div class="joyai-card">
+        <div class="joyai-card-title"><div class="joyai-num">03</div><h3 data-en="Shows Care — Emotional Dialogue" data-zh="有关怀 — Emotional Dialogue">有关怀 — Emotional Dialogue</h3></div>
+        <p data-en="Context-aware emotional dialog based on Post Action system. Automatically converts sensor data into caring suggestions — e.g. when a user says 'it's really hot', the system not only responds about temperature but also recommends drinks and cooling solutions, creating a warm interactive experience." data-zh="基于 Post Action 系统的上下文感知情感对话。自动转换传感器数据为关怀建议 — 例如用户说"天气很热"，系统不仅回答温度，还推荐饮水和降温方案，形成具有温度的交互体验。">基于 Post Action 系统的上下文感知情感对话。自动转换传感器数据为关怀建议 — 例如用户说"天气很热"，系统不仅回答温度，还推荐饮水和降温方案，形成具有温度的交互体验。</p>
+      </div>
+      <div class="joyai-card">
+        <div class="joyai-card-title"><div class="joyai-num">04</div><h3 data-en="Remembers — Memory Layering" data-zh="有记忆 — Memory Layering">有记忆 — Memory Layering</h3></div>
+        <p data-en="Multi-layer memory architecture: user static profile + event dynamic memory + interaction history. Uses time, frequency, and emotional value as 3D memory weights. The system can proactively recall relevant memories, achieving 'I remember what you said last time' continuity." data-zh="多层记忆架构：用户静态档案 + 事件动态记忆 + 交互历史。采用时间性、频率、情感值三维度量化记忆权重。系统可主动回忆相关记忆，实现"我记得你上次说过…"的连贯性体验。">多层记忆架构：用户静态档案 + 事件动态记忆 + 交互历史。采用时间性、频率、情感值三维度量化记忆权重。系统可主动回忆相关记忆，实现"我记得你上次说过…"的连贯性体验。</p>
+      </div>
+      <div class="joyai-card">
+        <div class="joyai-card-title"><div class="joyai-num">05</div><h3 data-en="Makes It Fun — Gamification Engine" data-zh="有乐趣 — Gamification Engine">有乐趣 — Gamification Engine</h3></div>
+        <p data-en="Task + Reward gamification engine with long-term growth system and dynamic difficulty adjustment. Accumulate achievements through daily interactions, unlock new skills, earn badges. For Vibe Coders, completing programming tasks also earns XP and achievements." data-zh="Task + Reward 游戏化引擎，长期养成系统，动态难度调整。通过日常交互积累成就、解锁新技能、获得徽章。对 Vibe Coder 来说，完成编程任务也能获得经验值和成就感。">Task + Reward 游戏化引擎，长期养成系统，动态难度调整。通过日常交互积累成就、解锁新技能、获得徽章。对 Vibe Coder 来说，完成编程任务也能获得经验值和成就感。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
      05 / EXPLODED VIEW
      ======================================================== -->
 <section class="full-section" id="product" style="flex-direction:column;gap:48px">
@@ -1082,6 +1201,44 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
         <div class="spec-row"><span class="spec-key" data-en="Target Price" data-zh="目标售价">Target Price</span><span class="spec-val">¥299</span></div>
         <div class="spec-row"><span class="spec-key" data-en="BOM Cost" data-zh="物料成本">BOM Cost</span><span class="spec-val" data-en="~¥150 (10K+ units)" data-zh="~¥150（万台量产）">~¥150 (10K+ units)</span></div>
         <div class="spec-row"><span class="spec-key" data-en="Compatibility" data-zh="兼容性">Compatibility</span><span class="spec-val">macOS / Windows / iOS / Android</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     TEAM
+     ======================================================== -->
+<section class="full-section" id="team" style="padding-top:120px;padding-bottom:120px">
+  <div class="team-section">
+    <div class="team-header">
+      <div class="detail-tag" data-en="Team" data-zh="团队">Team</div>
+      <h2 data-en="The team behind &lt;em&gt;PowCoder.&lt;/em&gt;" data-zh="PowCoder 背后的&lt;em&gt;团队。&lt;/em&gt;">PowCoder 背后的<em>团队。</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_carlos.webp" alt="Carlos" loading="lazy"></div>
+        <h3>Carlos</h3>
+        <p class="team-role" data-en="Hardware Entrepreneur" data-zh="硬件创业者">硬件创业者</p>
+        <p class="team-bio" data-en="ByteDance LLM algorithm engineer. Experienced in quantitative trading, product, and algorithms. Co-founded a smart hardware company and an AI database SaaS startup." data-zh="字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。">字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_luqing.webp" alt="卢清" loading="lazy"></div>
+        <h3 data-en="Lu Qing" data-zh="卢清">卢清</h3>
+        <p class="team-role" data-en="Full-Stack Engineer" data-zh="全栈工程师">全栈工程师</p>
+        <p class="team-bio" data-en="WeChat engineer with billion-scale product performance optimization experience. Holds AI patents. 2× silver award winner at 100-person hackathons. Independently developed and monetized multiple AI products for global markets." data-zh="微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。">微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_jayden.webp" alt="Jayden" loading="lazy"></div>
+        <h3>Jayden</h3>
+        <p class="team-role" data-en="AI Entrepreneur" data-zh="AI 创业者">AI 创业者</p>
+        <p class="team-bio" data-en="NUS Master's. Ex-Tencent &amp; L'Oréal e-commerce. Former AI incubator partner in Singapore. AI entrepreneur. 7× hackathon team lead &amp; award winner. 2nd prize at Shenzhen Sci-Tech Academy hardware startup competition." data-zh="NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。">NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。</p>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_carl.webp" alt="卡尔" loading="lazy"></div>
+        <h3 data-en="Carl" data-zh="卡尔">卡尔</h3>
+        <p class="team-role" data-en="Automotive Hardware PM" data-zh="车企硬件产品经理">车企硬件产品经理</p>
+        <p class="team-bio" data-en="Overseas automotive product manager, independently led vehicle product projects. Former AI market expansion in Singapore. EY ESG Challenge overseas regional gold award winner." data-zh="海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。">海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。</p>
       </div>
     </div>
   </div>
@@ -1214,7 +1371,7 @@ const modalSuccess = document.getElementById('modalSuccess');
 
 // Persist count in localStorage
 let waitlistNum = parseInt(localStorage.getItem('powcoder_waitlist_count') || '189');
-countEl.textContent = waitlistNum;
+if (countEl) countEl.textContent = waitlistNum;
 
 function openWaitlistModal() {
   modal.classList.add('show');
@@ -1222,7 +1379,7 @@ function openWaitlistModal() {
   modalSuccess.style.display = 'none';
 }
 
-openBtn.addEventListener('click', openWaitlistModal);
+if (openBtn) openBtn.addEventListener('click', openWaitlistModal);
 waitlistTriggers.forEach(btn => btn.addEventListener('click', openWaitlistModal));
 closeBtn.addEventListener('click', () => modal.classList.remove('show'));
 modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
@@ -1241,7 +1398,7 @@ form.addEventListener('submit', (e) => {
   // Increment count
   waitlistNum++;
   localStorage.setItem('powcoder_waitlist_count', waitlistNum.toString());
-  countEl.textContent = waitlistNum;
+  if (countEl) countEl.textContent = waitlistNum;
 
   // Show success
   modalFormDiv.style.display = 'none';
