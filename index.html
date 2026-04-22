@@ -101,6 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-brand svg{width:24px;height:24px}
 .nav-brand span{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--white);letter-spacing:2px;text-transform:uppercase}
+.nav-team-sep{font-weight:300!important;color:var(--gray-300)!important;letter-spacing:1px!important;font-size:.78rem!important;text-transform:none!important}
 .nav-docs{display:none}
 .nav-docs a{color:var(--gray-300);font-size:.78rem;font-weight:400;text-decoration:none;letter-spacing:.3px;transition:color .3s;white-space:nowrap}
 .nav-docs a:hover{color:var(--white)}
@@ -681,7 +682,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
 <nav>
   <a href="#hero" class="nav-brand">
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="nav-dot-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f3d9a8" stop-opacity="0.85"/><stop offset="60%" stop-color="#d9ae60" stop-opacity="0.25"/><stop offset="100%" stop-color="#d9ae60" stop-opacity="0"/></radialGradient></defs><path d="M50 12 C53 12, 56 15, 82 58 C88 68, 88 72, 85 76 C82 80, 74 84, 50 84 C26 84, 18 80, 15 76 C12 72, 12 68, 18 58 C44 15, 47 12, 50 12Z" fill="none" stroke="white" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="55" r="14" fill="url(#nav-dot-glow)"/><circle cx="50" cy="55" r="6" fill="#d9ae60"/></svg>
-    <span>PowCoder</span>
+    <span>PowCoder</span><span class="nav-team-sep"> | PowerX Team</span>
   </a>
   <div class="nav-docs">
     <a href="https://my.feishu.cn/docx/R1zzdbGeBoaWRpxAUnkckQQSnah?from=from_copylink" target="_blank" data-en="Product Doc" data-zh="产品文档">产品文档</a>
@@ -763,7 +764,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
         <span><span class="count-num" id="waitlistCount">189</span> <span data-en="people waiting" data-zh="人已加入">people waiting</span></span>
       </div>
     </div>
-    <div class="hero-team" data-en="Built by PowerX Team" data-zh="PowerX 团队出品">PowerX 团队出品</div>
+    <!-- PowerX 团队出品已移至 header -->
   </div>
   <div class="hero-product" id="heroProduct">
     <img src="images/hero_product_3d.png" alt="PowCoder AI Agent Terminal">
@@ -1272,7 +1273,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
 <section class="full-section" id="team" style="padding-top:120px;padding-bottom:120px">
   <div class="team-section">
     <div class="team-header">
-      <div class="detail-tag" data-en="Team" data-zh="团队">Team</div>
+      <div class="detail-tag" data-en="PowerX Team" data-zh="PowerX 团队">PowerX Team</div>
       <h2 data-en="The team behind &lt;em&gt;PowCoder.&lt;/em&gt;" data-zh="PowCoder 背后的&lt;em&gt;团队。&lt;/em&gt;">PowCoder 背后的<em>团队。</em></h2>
     </div>
     <div class="team-grid">
