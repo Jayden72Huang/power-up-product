@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -100,7 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-brand svg{width:24px;height:24px}
 .nav-brand span{font-family:var(--mono);font-size:.9rem;font-weight:500;color:var(--white);letter-spacing:2px;text-transform:uppercase}
-.nav-docs{display:flex;align-items:center;gap:20px;margin-left:16px;padding-left:16px;border-left:1px solid rgba(255,255,255,0.15)}
+.nav-docs{display:none}
 .nav-docs a{color:var(--gray-300);font-size:.78rem;font-weight:400;text-decoration:none;letter-spacing:.3px;transition:color .3s;white-space:nowrap}
 .nav-docs a:hover{color:var(--white)}
 .nav-links{display:flex;gap:32px}
@@ -218,8 +219,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .stat-glass::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.03),transparent);pointer-events:none}
 .stat-glass .stat-num{font-family:var(--mono);font-size:2.4rem;font-weight:300;color:var(--white);line-height:1;letter-spacing:-2px}
 .stat-glass .stat-label{font-size:.88rem;color:var(--gray-300);margin-top:6px;line-height:1.5;font-weight:400}
-.hero-product{position:relative;display:flex;justify-content:flex-start;align-items:center;height:100vh;padding-left:0;justify-self:start;max-width:720px}
-.hero-product img{max-height:75vh;width:auto;max-width:95%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(0,0,0,0.5))}
+.hero-product{position:relative;display:flex;justify-content:center;align-items:center;height:100vh;padding-left:0;justify-self:center;max-width:720px}
+.hero-product img{max-height:55vh;width:auto;max-width:80%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(0,0,0,0.5))}
 /* Annotation lines — positioned relative to hero-product container */
 .annotation{position:absolute;display:flex;align-items:flex-start;gap:8px}
 .annotation .line{background:rgba(255,255,255,0.2);flex-shrink:0}
@@ -291,19 +292,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .team-header{text-align:center;margin-bottom:64px}
 .team-header h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:0;line-height:1.15}
 .team-header h2 em{font-style:italic;color:var(--gray-200)}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
-.team-card{text-align:center}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.team-card{text-align:left;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid rgba(255,255,255,0.08);transition:transform .3s,box-shadow .3s;position:relative}
+.team-card::before{content:'';position:absolute;inset:-1px;border-radius:15px;padding:2px;background:linear-gradient(135deg,var(--chroma-a,#c084fc),var(--chroma-b,#f472b6),var(--chroma-c,#38bdf8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s}
+.team-card:hover::before{opacity:1}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.team-card:nth-child(1){--chroma-a:#a78bfa;--chroma-b:#7c3aed;--chroma-c:#6d28d9}
+.team-card:nth-child(2){--chroma-a:#f472b6;--chroma-b:#ec4899;--chroma-c:#db2777}
+.team-card:nth-child(3){--chroma-a:#38bdf8;--chroma-b:#0ea5e9;--chroma-c:#0284c7}
+.team-card:nth-child(4){--chroma-a:#4ade80;--chroma-b:#22c55e;--chroma-c:#16a34a}
+.team-card .team-photo{aspect-ratio:3/4;overflow:hidden}
+.team-card .team-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%);transition:filter .4s}
+.team-card:hover .team-photo img{filter:grayscale(0%)}
+.team-card .team-info{padding:16px 18px 20px}
+.team-card .team-info .team-name-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.team-card .team-info .team-name-row h3{font-size:1rem;margin:0}
+.team-card .team-info .team-handle{font-family:var(--mono);font-size:.78rem;color:var(--gray-300)}
+.team-card .team-bio{font-size:.82rem;color:var(--gray-300);line-height:1.6;margin-top:8px;font-weight:300}
 .team-photo{width:180px;height:180px;margin:0 auto 20px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.08)}
 .team-photo img{width:100%;height:100%;object-fit:cover}
 .team-card h3{font-family:var(--mono);font-size:1.1rem;font-weight:600;color:var(--white);letter-spacing:1px;margin-bottom:6px}
 .team-role{font-family:var(--mono);font-size:.78rem;color:rgba(100,108,255,0.8);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-weight:500}
 .team-bio{color:var(--gray-200);font-size:.88rem;line-height:1.7;font-weight:300;max-width:280px;margin:0 auto}
 @media(max-width:1024px){
-  .team-grid{grid-template-columns:repeat(2,1fr);gap:48px}
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:20px}
 }
 @media(max-width:768px){
-  .team-grid{grid-template-columns:1fr;gap:48px}
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:14px}
   .team-header h2{font-size:2rem}
+  .team-card .team-info{padding:10px 12px 14px}
+  .team-card .team-info .team-name-row h3{font-size:.88rem}
+  .team-card .team-info .team-handle{font-size:.7rem}
 }
 
 /* ===== CTA SECTION ===== */
@@ -337,19 +356,43 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   .hero-cta{justify-content:center}
   .hero-product{height:50vh;margin-top:20px}
   .annotation{display:none}
-  nav{padding:20px 24px}
+  nav{padding:16px 20px}
   .full-section{padding:80px 24px}
   .detail-row,.detail-row.reverse{grid-template-columns:1fr;gap:40px;direction:ltr}
   .specs-grid{grid-template-columns:1fr}
   .feature-grid{grid-template-columns:1fr}
   .scroll-indicator,.scroll-dot{display:none}
+  /* Mobile nav: hide links, show hamburger */
+  .nav-links{display:none}
+  .nav-right{gap:16px}
+  .nav-hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;z-index:301}
+  .nav-hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+  .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+  .nav-hamburger.open span:nth-child(2){opacity:0}
+  .nav-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+  /* Card Nav overlay */
+  .nav-card-overlay{position:fixed;inset:0;z-index:300;background:rgba(4,6,12,0.92);backdrop-filter:blur(20px);display:none;padding:80px 20px 40px;overflow-y:auto}
+  .nav-card-overlay.open{display:block;animation:modalFade .35s ease}
+  .nav-card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:480px;margin:0 auto}
+  .nav-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px 16px;text-decoration:none;transition:all .25s}
+  .nav-card:hover,.nav-card:active{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2)}
+  .nav-card .nav-card-title{color:var(--white);font-size:.92rem;font-weight:500;margin-bottom:4px}
+  .nav-card .nav-card-desc{color:var(--gray-300);font-size:.72rem;line-height:1.4}
+  .hero-product{height:auto;min-height:40vh;margin-top:20px}
+  .hero-product img{max-height:40vh}
 }
 @media(max-width:768px){
-  .hero-text h1{font-size:2.4rem}
+  .hero-text h1{font-size:2rem}
   .hero-stats{flex-direction:column;align-items:center}
-  .nav-links{gap:20px}
-  .nav-links a{font-size:.75rem}
-  .nav-docs{display:none}
+  .hero-desc{font-size:.92rem}
+  .hero-cta{flex-direction:column;align-items:center;gap:12px}
+  .cta-section h2{font-size:2.8rem}
+  .cta-section .cta-kicker{font-size:1.2rem}
+}
+/* Hamburger hidden on desktop */
+@media(min-width:1025px){
+  .nav-hamburger{display:none!important}
+  .nav-card-overlay{display:none!important}
 }
 
 /* ===== LIFESTYLE MOMENT ===== */
@@ -665,8 +708,24 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
       <span data-lang="en">EN</span>
       <span class="active" data-lang="zh">中</span>
     </div>
+    <div class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
+
+<!-- Mobile Card Nav Overlay -->
+<div class="nav-card-overlay" id="navCardOverlay">
+  <div class="nav-card-grid">
+    <a href="#hero" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Home" data-zh="首页">首页</div><div class="nav-card-desc" data-en="Back to top" data-zh="回到顶部">回到顶部</div></a>
+    <a href="#lifestyle" class="nav-card" data-nav-close><div class="nav-card-title" data-en="In Use" data-zh="使用场景">使用场景</div><div class="nav-card-desc" data-en="Voice-first workflow" data-zh="语音优先">语音优先</div></a>
+    <a href="#audience" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Audience" data-zh="目标人群">目标人群</div><div class="nav-card-desc" data-en="Three personas" data-zh="三类用户画像">三类用户画像</div></a>
+    <a href="#pain" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Pain Points" data-zh="核心痛点">核心痛点</div><div class="nav-card-desc" data-en="7 problems solved" data-zh="七大痛点">七大痛点</div></a>
+    <a href="#features" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Features" data-zh="功能设计">功能设计</div><div class="nav-card-desc" data-en="6 core designs" data-zh="六大核心">六大核心</div></a>
+    <a href="#product" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Structure" data-zh="产品结构">产品结构</div><div class="nav-card-desc" data-en="7 precision layers" data-zh="七层精密结构">七层精密结构</div></a>
+    <a href="#specs" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Specs" data-zh="技术规格">技术规格</div><div class="nav-card-desc" data-en="Technical details" data-zh="硬件参数">硬件参数</div></a>
+    <a href="#team" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Team" data-zh="团队">团队</div><div class="nav-card-desc" data-en="Meet the builders" data-zh="认识我们">认识我们</div></a>
+    <a href="#cta" class="nav-card" data-nav-close><div class="nav-card-title" data-en="Try" data-zh="试用">试用</div><div class="nav-card-desc" data-en="Join waitlist" data-zh="加入等待列表">加入等待列表</div></a>
+  </div>
+</div>
 
 <!-- ===== SIDE ELEMENTS ===== -->
 <div class="scroll-indicator">
@@ -693,9 +752,10 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
      01 / HERO
      ======================================================== -->
 <section class="hero" id="hero">
+  <div id="hero-light-rays" style="position:absolute;top:80px;right:0;bottom:0;width:55%;z-index:0;pointer-events:none;overflow:hidden"></div>
   <div class="hero-text">
     <h1 data-en="PowCoder —&lt;em&gt;Forge your workflow&lt;/em&gt;" data-zh="PowCoder — &lt;em&gt;重铸你的工作流&lt;/em&gt;">PowCoder —<em>Forge your workflow</em></h1>
-    <p class="hero-desc" data-en="The world's first triangular AI Agent hardware terminal fused with a power bank. Voice-driven Vibe Coding, real-time Agent status, powered by JD JoyInside." data-zh="全球首款三角形 AI Agent 硬件终端 × 移动电源。语音驱动 Vibe Coding，实时感知 Agent 状态。">The world's first triangular AI Agent hardware terminal fused with a power bank. Voice-driven Vibe Coding, real-time Agent status, powered by JD JoyInside.</p>
+    <p class="hero-desc" data-en="The world's first triangular AI Agent hardware terminal fused with a power bank. Voice-driven Vibe Coding, real-time Agent status." data-zh="全球首款三角形 AI Agent 硬件终端 × 移动电源。语音驱动 Vibe Coding，实时感知 Agent 状态。">The world's first triangular AI Agent hardware terminal fused with a power bank. Voice-driven Vibe Coding, real-time Agent status.</p>
     <div class="hero-cta">
       <button class="btn-waitlist" id="openWaitlist" data-en="Join Waiting List" data-zh="加入等待列表">Join Waiting List</button>
       <div class="waitlist-count">
@@ -703,10 +763,10 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
         <span><span class="count-num" id="waitlistCount">189</span> <span data-en="people waiting" data-zh="人已加入">people waiting</span></span>
       </div>
     </div>
-    <div class="hero-team" data-en="JD JoyInside 1st Innovation &amp; Entrepreneurship Competition — Explorer Track (PowerX Team)" data-zh="京东 JoyInside 首届创新创业大赛 —— 探索者赛道（PowerX 团队）">京东 JoyInside 首届创新创业大赛 —— 探索者赛道（PowerX 团队）</div>
+    <div class="hero-team" data-en="Built by PowerX Team" data-zh="PowerX 团队出品">PowerX 团队出品</div>
   </div>
-  <div class="hero-product">
-    <img src="images/hero_annotated.webp" alt="PowCoder AI Agent Terminal — Annotated">
+  <div class="hero-product" id="heroProduct">
+    <img src="images/hero_product_3d.png" alt="PowCoder AI Agent Terminal">
     <div class="slide-counter">01/08</div>
   </div>
 </section>
@@ -722,7 +782,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
     <div class="lifestyle-content">
       <div class="detail-tag" data-en="In Use — Voice First" data-zh="使用场景 — 语音优先">In Use — Voice First</div>
       <h2 data-en="Press. Speak.&lt;br&gt;&lt;em&gt;Ship.&lt;/em&gt;" data-zh="按下。说话。&lt;br&gt;&lt;em&gt;发布。&lt;/em&gt;">Press. Speak.<br><em>Ship.</em></h2>
-      <p data-en="No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee." data-zh="不用键盘、不用打开笔记本、不用切换到 Cursor 窗口。只需要你的声音、掌心的一块三角形设备，以及在你走路、通勤、喝咖啡时为你写代码的 Agent。">No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee.</p>
+      <p data-en="No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee." data-zh="按下 PowCoder 的录音键，用语音描述你的编程需求。AI Agent 自动将你的想法转化为代码 —— 走路、通勤、喝咖啡，随时随地完成开发。">No keyboard. No laptop open. No Cursor window to switch to. Just your voice, a triangular device in your palm, and an Agent that ships code while you walk, ride, or sip coffee.</p>
       <div class="lifestyle-quote" data-en="&amp;ldquo;I used to lose my best ideas on my commute. Now I dictate them into PowCoder and the code is waiting for me when I sit down.&amp;rdquo;&lt;small&gt;— early beta user · Shanghai&lt;/small&gt;" data-zh="&amp;ldquo;我以前最好的想法都丢在通勤路上。现在我对着 PowCoder 说出来，等我到工位时代码已经写好了。&amp;rdquo;&lt;small&gt;— 内测用户 · 上海&lt;/small&gt;">&ldquo;I used to lose my best ideas on my commute. Now I dictate them into PowCoder and the code is waiting for me when I sit down.&rdquo;<small>— early beta user · Shanghai</small></div>
     </div>
   </div>
@@ -1218,27 +1278,35 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
     <div class="team-grid">
       <div class="team-card">
         <div class="team-photo"><img src="images/team_carlos.webp" alt="Carlos" loading="lazy"></div>
-        <h3>Carlos</h3>
-        <p class="team-role" data-en="Hardware Entrepreneur" data-zh="硬件创业者">硬件创业者</p>
-        <p class="team-bio" data-en="ByteDance LLM algorithm engineer. Experienced in quantitative trading, product, and algorithms. Co-founded a smart hardware company and an AI database SaaS startup." data-zh="字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。">字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。</p>
+        <div class="team-info">
+          <div class="team-name-row"><h3>Carlos</h3><span class="team-handle">@carlos</span></div>
+          <p class="team-role" data-en="Hardware Entrepreneur" data-zh="硬件创业者">硬件创业者</p>
+          <p class="team-bio" data-en="ByteDance LLM algorithm engineer. Experienced in quantitative trading, product, and algorithms. Co-founded a smart hardware company and an AI database SaaS startup." data-zh="字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。">字节大模型算法工程师，涉足量化、产品、算法，有过智能硬件公司和 AI 数据库 SaaS 公司的创业经历。</p>
+        </div>
       </div>
       <div class="team-card">
         <div class="team-photo"><img src="images/team_luqing.webp" alt="卢清" loading="lazy"></div>
-        <h3 data-en="Lu Qing" data-zh="卢清">卢清</h3>
-        <p class="team-role" data-en="Full-Stack Engineer" data-zh="全栈工程师">全栈工程师</p>
-        <p class="team-bio" data-en="WeChat engineer with billion-scale product performance optimization experience. Holds AI patents. 2× silver award winner at 100-person hackathons. Independently developed and monetized multiple AI products for global markets." data-zh="微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。">微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。</p>
+        <div class="team-info">
+          <div class="team-name-row"><h3 data-en="Lu Qing" data-zh="卢清">卢清</h3><span class="team-handle">@luqing</span></div>
+          <p class="team-role" data-en="Full-Stack Engineer" data-zh="全栈工程师">全栈工程师</p>
+          <p class="team-bio" data-en="WeChat engineer with billion-scale product performance optimization experience. Holds AI patents. 2× silver award winner at 100-person hackathons. Independently developed and monetized multiple AI products for global markets." data-zh="微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。">微信工程师，亿级产品性能优化经验，持有 AI 专利，2 次百人黑客松获银奖，独立开发多款 AI 出海产品并实现变现。</p>
+        </div>
       </div>
       <div class="team-card">
         <div class="team-photo"><img src="images/team_jayden.webp" alt="Jayden" loading="lazy"></div>
-        <h3>Jayden</h3>
-        <p class="team-role" data-en="AI Entrepreneur" data-zh="AI 创业者">AI 创业者</p>
-        <p class="team-bio" data-en="NUS Master's. Ex-Tencent &amp; L'Oréal e-commerce. Former AI incubator partner in Singapore. AI entrepreneur. 7× hackathon team lead &amp; award winner. 2nd prize at Shenzhen Sci-Tech Academy hardware startup competition." data-zh="NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。">NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。</p>
+        <div class="team-info">
+          <div class="team-name-row"><h3>Jayden</h3><span class="team-handle">@jayden</span></div>
+          <p class="team-role" data-en="AI Entrepreneur" data-zh="AI 创业者">AI 创业者</p>
+          <p class="team-bio" data-en="NUS Master's. Ex-Tencent &amp; L'Oréal e-commerce. Former AI incubator partner in Singapore. AI entrepreneur. 7× hackathon team lead &amp; award winner. 2nd prize at Shenzhen Sci-Tech Academy hardware startup competition." data-zh="NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。">NUS 硕士，腾讯 &amp; 欧莱雅电商出身，曾任新加坡 AI 孵化器合伙人，现 AI 创业者，7 次黑客松带队获奖，深圳科创学院硬件创业比赛二等奖。</p>
+        </div>
       </div>
       <div class="team-card">
         <div class="team-photo"><img src="images/team_carl.webp" alt="卡尔" loading="lazy"></div>
-        <h3 data-en="Carl" data-zh="卡尔">卡尔</h3>
-        <p class="team-role" data-en="Automotive Hardware PM" data-zh="车企硬件产品经理">车企硬件产品经理</p>
-        <p class="team-bio" data-en="Overseas automotive product manager, independently led vehicle product projects. Former AI market expansion in Singapore. EY ESG Challenge overseas regional gold award winner." data-zh="海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。">海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。</p>
+        <div class="team-info">
+          <div class="team-name-row"><h3 data-en="Carl" data-zh="卡尔">卡尔</h3><span class="team-handle">@carl</span></div>
+          <p class="team-role" data-en="Automotive Hardware PM" data-zh="车企硬件产品经理">车企硬件产品经理</p>
+          <p class="team-bio" data-en="Overseas automotive product manager, independently led vehicle product projects. Former AI market expansion in Singapore. EY ESG Challenge overseas regional gold award winner." data-zh="海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。">海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1268,7 +1336,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
     <a href="#product" data-en="Product" data-zh="产品">Product</a>
     <a href="#specs" data-en="Specifications" data-zh="规格">Specifications</a>
   </div>
-  <div class="footer-sub" data-en="JD JoyInside Innovation Challenge · 2026" data-zh="京东 JoyInside 首届创新创业大赛 · 2026">JD JoyInside Innovation Challenge · 2026</div>
+  <div class="footer-sub" data-en="PowerX · 2026" data-zh="PowerX · 2026">PowerX · 2026</div>
   <div class="bgm-credit">Music by <a href="https://pixabay.com/users/romansenykmusic-11989248/" target="_blank" rel="noopener">Roman Senyk</a> from <a href="https://pixabay.com/" target="_blank" rel="noopener">Pixabay</a></div>
   <a href="#hero" class="to-top">TO THE TOP</a>
 </footer>
@@ -1320,6 +1388,25 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
 
 <!-- ===== SCROLL OBSERVER ===== -->
 <script>
+// Mobile hamburger + card nav
+(function(){
+  const btn=document.getElementById('navHamburger');
+  const overlay=document.getElementById('navCardOverlay');
+  if(!btn||!overlay)return;
+  btn.addEventListener('click',()=>{
+    btn.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow=overlay.classList.contains('open')?'hidden':'';
+  });
+  overlay.querySelectorAll('[data-nav-close]').forEach(a=>{
+    a.addEventListener('click',()=>{
+      btn.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
+
 // Active nav link & scroll-dot tracking
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -1560,6 +1647,145 @@ applyLang('zh');
   });
 })();
 </script>
+
+<script type="importmap">{"imports":{"ogl":"https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm"}}</script>
+<script type="module">
+import{Renderer,Program,Triangle,Mesh}from'ogl';
+
+(function(){
+  const container=document.getElementById('hero-light-rays');
+  if(!container)return;
+
+  /* === Config === */
+  const CONFIG={
+    raysOrigin:'top-center',
+    raysColor:'#ffffff',
+    raysSpeed:1,
+    lightSpread:0.5,
+    rayLength:3,
+    followMouse:true,
+    mouseInfluence:0.1,
+    noiseAmount:0,
+    distortion:0,
+    pulsating:false,
+    fadeDistance:1,
+    saturation:1
+  };
+
+  const hexToRgb=hex=>{const m=/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);return m?[parseInt(m[1],16)/255,parseInt(m[2],16)/255,parseInt(m[3],16)/255]:[1,1,1]};
+
+  const getAnchorAndDir=(origin,w,h)=>{
+    const o=0.2;
+    switch(origin){
+      case'top-left':return{anchor:[0,-o*h],dir:[0,1]};
+      case'top-right':return{anchor:[w,-o*h],dir:[0,1]};
+      case'left':return{anchor:[-o*w,0.5*h],dir:[1,0]};
+      case'right':return{anchor:[(1+o)*w,0.5*h],dir:[-1,0]};
+      case'bottom-left':return{anchor:[0,(1+o)*h],dir:[0,-1]};
+      case'bottom-center':return{anchor:[0.5*w,(1+o)*h],dir:[0,-1]};
+      case'bottom-right':return{anchor:[w,(1+o)*h],dir:[0,-1]};
+      default:return{anchor:[0.5*w,-o*h],dir:[0,1]};
+    }
+  };
+
+  const vert=`attribute vec2 position;varying vec2 vUv;void main(){vUv=position*0.5+0.5;gl_Position=vec4(position,0.0,1.0);}`;
+
+  const frag=`precision highp float;
+uniform float iTime;uniform vec2 iResolution;uniform vec2 rayPos;uniform vec2 rayDir;
+uniform vec3 raysColor;uniform float raysSpeed;uniform float lightSpread;uniform float rayLength;
+uniform float pulsating;uniform float fadeDistance;uniform float saturation;
+uniform vec2 mousePos;uniform float mouseInfluence;uniform float noiseAmount;uniform float distortion;
+varying vec2 vUv;
+float noise(vec2 st){return fract(sin(dot(st.xy,vec2(12.9898,78.233)))*43758.5453123);}
+float rayStrength(vec2 src,vec2 ref,vec2 coord,float sA,float sB,float spd){
+  vec2 s2c=coord-src;vec2 dn=normalize(s2c);float ca=dot(dn,ref);
+  float da=ca+distortion*sin(iTime*2.0+length(s2c)*0.01)*0.2;
+  float sf=pow(max(da,0.0),1.0/max(lightSpread,0.001));
+  float dist=length(s2c);float mx=iResolution.x*rayLength;
+  float lf=clamp((mx-dist)/mx,0.0,1.0);
+  float ff=clamp((iResolution.x*fadeDistance-dist)/(iResolution.x*fadeDistance),0.5,1.0);
+  float pl=pulsating>0.5?(0.8+0.2*sin(iTime*spd*3.0)):1.0;
+  float bs=clamp((0.45+0.15*sin(da*sA+iTime*spd))+(0.3+0.2*cos(-da*sB+iTime*spd)),0.0,1.0);
+  return bs*lf*ff*sf*pl;
+}
+void main(){
+  vec2 coord=vec2(gl_FragCoord.x,iResolution.y-gl_FragCoord.y);
+  vec2 fd=rayDir;
+  if(mouseInfluence>0.0){vec2 ms=mousePos*iResolution.xy;vec2 md=normalize(ms-rayPos);fd=normalize(mix(rayDir,md,mouseInfluence));}
+  vec4 r1=vec4(1.0)*rayStrength(rayPos,fd,coord,36.2214,21.11349,1.5*raysSpeed);
+  vec4 r2=vec4(1.0)*rayStrength(rayPos,fd,coord,22.3991,18.0234,1.1*raysSpeed);
+  vec4 c=r1*0.5+r2*0.4;
+  if(noiseAmount>0.0){float n=noise(coord*0.01+iTime*0.1);c.rgb*=(1.0-noiseAmount+noiseAmount*n);}
+  float b=1.0-(coord.y/iResolution.y);
+  c.x*=0.1+b*0.8;c.y*=0.3+b*0.6;c.z*=0.5+b*0.5;
+  if(saturation!=1.0){float g=dot(c.rgb,vec3(0.299,0.587,0.114));c.rgb=mix(vec3(g),c.rgb,saturation);}
+  c.rgb*=raysColor;
+  gl_FragColor=c;
+}`;
+
+  const renderer=new Renderer({dpr:Math.min(window.devicePixelRatio,2),alpha:true});
+  const gl=renderer.gl;
+  gl.canvas.style.width='100%';gl.canvas.style.height='100%';
+  container.appendChild(gl.canvas);
+
+  const uniforms={
+    iTime:{value:0},iResolution:{value:[1,1]},
+    rayPos:{value:[0,0]},rayDir:{value:[0,1]},
+    raysColor:{value:hexToRgb(CONFIG.raysColor)},
+    raysSpeed:{value:CONFIG.raysSpeed},
+    lightSpread:{value:CONFIG.lightSpread},
+    rayLength:{value:CONFIG.rayLength},
+    pulsating:{value:CONFIG.pulsating?1:0},
+    fadeDistance:{value:CONFIG.fadeDistance},
+    saturation:{value:CONFIG.saturation},
+    mousePos:{value:[0.5,0.5]},
+    mouseInfluence:{value:CONFIG.mouseInfluence},
+    noiseAmount:{value:CONFIG.noiseAmount},
+    distortion:{value:CONFIG.distortion}
+  };
+
+  const geometry=new Triangle(gl);
+  const program=new Program(gl,{vertex:vert,fragment:frag,uniforms});
+  const mesh=new Mesh(gl,{geometry,program});
+
+  const mouse={x:0.5,y:0.5};const smooth={x:0.5,y:0.5};
+
+  function resize(){
+    const w=container.clientWidth,h=container.clientHeight;
+    renderer.setSize(w,h);
+    const dpr=renderer.dpr,pw=w*dpr,ph=h*dpr;
+    uniforms.iResolution.value=[pw,ph];
+    const{anchor,dir}=getAnchorAndDir(CONFIG.raysOrigin,pw,ph);
+    uniforms.rayPos.value=anchor;uniforms.rayDir.value=dir;
+  }
+
+  let visible=true;
+  const obs=new IntersectionObserver(([e])=>{visible=e.isIntersecting},{threshold:0.05});
+  obs.observe(container);
+
+  function loop(t){
+    requestAnimationFrame(loop);
+    if(!visible)return;
+    uniforms.iTime.value=t*0.001;
+    if(CONFIG.followMouse&&CONFIG.mouseInfluence>0){
+      smooth.x=smooth.x*0.92+mouse.x*0.08;smooth.y=smooth.y*0.92+mouse.y*0.08;
+      uniforms.mousePos.value=[smooth.x,smooth.y];
+    }
+    renderer.render({scene:mesh});
+  }
+
+  window.addEventListener('resize',resize);
+  window.addEventListener('mousemove',e=>{
+    const r=container.getBoundingClientRect();
+    mouse.x=(e.clientX-r.left)/r.width;mouse.y=(e.clientY-r.top)/r.height;
+  });
+  resize();requestAnimationFrame(loop);
+})();
+
+/* BorderGlow removed */
+</script>
+
+<script src="https://ai-customer-service-neon.vercel.app/widget.js" data-api-key="adff00d9b3d4b58cb65d4e5dafc1a4571b7cb820b93c59a615e13c8efd19a0f6"></script>
 
 </body>
 </html>
