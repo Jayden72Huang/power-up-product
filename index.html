@@ -71,8 +71,10 @@ html[lang="zh-CN"] .footer-brand span{
   font-style:normal !important;
   font-weight:300 !important;
 }
-html[lang="zh-CN"] .hero-text h1{font-size:clamp(2.6rem,5vw,4.2rem)}
-html[lang="zh-CN"] .hero-text h1 em{font-weight:200 !important;color:var(--gray-200)}
+html[lang="zh-CN"] .hero-text{max-width:700px}
+html[lang="zh-CN"] .hero-text h1{font-size:clamp(2.6rem,4.5vw,3.6rem)}
+html[lang="zh-CN"] .hero-text h1 em{font-weight:200 !important;color:var(--gray-200);white-space:nowrap}
+html[lang="zh-CN"] .hero-desc{max-width:580px}
 
 /* Pain section: restore Noto Serif SC against the zh override above */
 html[lang="zh-CN"] .pain-header h2,
@@ -293,7 +295,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .team-header{text-align:center;margin-bottom:64px}
 .team-header h2{font-family:var(--serif);font-size:2.8rem;font-weight:400;font-style:italic;color:var(--white);margin-bottom:0;line-height:1.15}
 .team-header h2 em{font-style:italic;color:var(--gray-200)}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .team-card{text-align:left;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid rgba(255,255,255,0.08);transition:transform .3s,box-shadow .3s;position:relative}
 .team-card::before{content:'';position:absolute;inset:-1px;border-radius:15px;padding:2px;background:linear-gradient(135deg,var(--chroma-a,#c084fc),var(--chroma-b,#f472b6),var(--chroma-c,#38bdf8));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s}
 .team-card:hover::before{opacity:1}
@@ -302,6 +304,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:28px 60px;display:fl
 .team-card:nth-child(2){--chroma-a:#f472b6;--chroma-b:#ec4899;--chroma-c:#db2777}
 .team-card:nth-child(3){--chroma-a:#38bdf8;--chroma-b:#0ea5e9;--chroma-c:#0284c7}
 .team-card:nth-child(4){--chroma-a:#4ade80;--chroma-b:#22c55e;--chroma-c:#16a34a}
+.team-card:nth-child(5){--chroma-a:#fb923c;--chroma-b:#f97316;--chroma-c:#ea580c}
+.team-card:nth-child(6){--chroma-a:#34d399;--chroma-b:#10b981;--chroma-c:#059669}
 .team-card .team-photo{aspect-ratio:3/4;overflow:hidden}
 .team-card .team-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%);transition:filter .4s}
 .team-card:hover .team-photo img{filter:grayscale(0%)}
@@ -756,7 +760,7 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
   <div id="hero-light-rays" style="position:absolute;top:80px;right:0;bottom:0;width:55%;z-index:0;pointer-events:none;overflow:hidden"></div>
   <div class="hero-text">
     <h1 data-en="PowCoder —&lt;em&gt;Redefining Human-Agent Interaction&lt;/em&gt;" data-zh="PowCoder — &lt;em&gt;定义人与Agent交互新范式&lt;/em&gt;">PowCoder —<em>Redefining Human-Agent Interaction</em></h1>
-    <p class="hero-desc" data-en="The world's first triangular AI Agent hardware terminal × power bank. Designed for everyone entering the Web 4.0 era — a tangible Agent control device covering AI Coding, multi-Agent collaboration, and even A2A transactions." data-zh="全球首款三角形 AI Agent 硬件终端 × 移动电源。为每一个踏入 Web 4.0 时代的人群，设计的一款触手可及的 Agent 操控设备，覆盖从 AI Coding，到多 Agent 协作，甚至 A2A 交易...等主流场景。">The world's first triangular AI Agent hardware terminal × power bank. Designed for everyone entering the Web 4.0 era — a tangible Agent control device covering AI Coding, multi-Agent collaboration, and even A2A transactions.</p>
+    <p class="hero-desc" data-en="The world's first triangular AI Agent hardware terminal × power bank.&lt;br&gt;Designed for everyone entering the Web 4.0 era —&lt;br&gt;a tangible Agent control device covering AI Coding,&lt;br&gt;multi-Agent collaboration, and even A2A transactions." data-zh="全球首款三角形 AI Agent 硬件终端 × 移动电源。&lt;br&gt;为每一个踏入 Web 4.0 时代的伙伴，&lt;br&gt;设计的一款触手可及的 Agent 操控设备，&lt;br&gt;覆盖从 AI Coding，到多 Agent 协作，甚至 A2A 交易...等主流场景。">全球首款三角形 AI Agent 硬件终端 × 移动电源。<br>为每一个踏入 Web 4.0 时代的伙伴，<br>设计的一款触手可及的 Agent 操控设备，<br>覆盖从 AI Coding，到多 Agent 协作，甚至 A2A 交易...等主流场景。</p>
     <div class="hero-cta">
       <button class="btn-waitlist" id="openWaitlist" data-en="Join Waiting List" data-zh="加入等待列表">Join Waiting List</button>
       <div class="waitlist-count">
@@ -1307,6 +1311,22 @@ html[lang="en"] .pain-sub-item h4{font-family:var(--serif);font-style:italic;fon
           <div class="team-name-row"><h3 data-en="Carl" data-zh="卡尔">卡尔</h3><span class="team-handle">@carl</span></div>
           <p class="team-role" data-en="Automotive Hardware PM" data-zh="车企硬件产品经理">车企硬件产品经理</p>
           <p class="team-bio" data-en="Overseas automotive product manager, independently led vehicle product projects. Former AI market expansion in Singapore. EY ESG Challenge overseas regional gold award winner." data-zh="海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。">海外汽车产品经理，独立带队负责整车产品项目，前新加坡 AI 市场拓展，EY ESG 挑战赛海外区域金奖。</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_mandy.webp" alt="Mandy" loading="lazy"></div>
+        <div class="team-info">
+          <div class="team-name-row"><h3>Mandy</h3><span class="team-handle">@mandy</span></div>
+          <p class="team-role" data-en="Product Thinker" data-zh="产品思考者">产品思考者</p>
+          <p class="team-bio" data-en="Art BA &amp; MA. Tencent 2026 product campus hire. Hardcore hardware product thinker. 1st prize winner at Douyin Hackathon." data-zh="艺术学本硕，腾讯 26 产品校招，硬件狂热级产品思考者，抖音 Hackathon 一等奖获得者。">艺术学本硕，腾讯 26 产品校招，硬件狂热级产品思考者，抖音 Hackathon 一等奖获得者。</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team_sean.webp" alt="Sean" loading="lazy"></div>
+        <div class="team-info">
+          <div class="team-name-row"><h3>Sean</h3><span class="team-handle">@sean</span></div>
+          <p class="team-role" data-en="AI Startup CTO" data-zh="AI 初创 CTO">AI 初创 CTO</p>
+          <p class="team-bio" data-en="CTO of an AI software startup. Hardware entrepreneur. Ex-Alibaba &amp; Kuaishou engineer. Hackathon 1st prize winner." data-zh="AI 软件初创团队 CTO，硬件创业者，前阿里、快手研发工程师，Hackathon 一等奖获得者。">AI 软件初创团队 CTO，硬件创业者，前阿里、快手研发工程师，Hackathon 一等奖获得者。</p>
         </div>
       </div>
     </div>
