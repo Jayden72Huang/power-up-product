@@ -356,6 +356,7 @@ footer{padding:80px 60px;text-align:center;border-top:1px solid rgba(255,255,255
   body{background-attachment:scroll}
   .hero{grid-template-columns:1fr;padding:120px 24px 60px;text-align:center}
   .hero-text{padding:0;align-items:center;text-align:center}
+  #hero-light-rays{width:100%!important;right:auto!important;left:0!important}
   .hero-desc{margin:0 auto 32px}
   .hero-stats{justify-content:center}
   .hero-cta{justify-content:center}
@@ -1494,11 +1495,17 @@ modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn.disabled) return;
   const name = document.getElementById('userName').value.trim();
   const email = document.getElementById('userEmail').value.trim();
   if (!name || !email) return;
 
-  // Submit to Supabase
+  // Disable button to prevent rapid clicks
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.6';
+
+  // Submit to Supabase (upsert: ignore if email already exists)
   const SUPABASE_URL = 'https://mtwwbzuqatwnapdmjmjr.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3dienVxYXR3bmFwZG1qbWpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2NjM0ODIsImV4cCI6MjA4MTIzOTQ4Mn0.NmZaehJRyhPhQDmkELQceFxOqR4BXNWsFUm9bo7tpZI';
   try {
@@ -1507,12 +1514,16 @@ form.addEventListener('submit', async (e) => {
       headers: {
         'Content-Type': 'application/json',
         'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'resolution=ignore-duplicates'
       },
       body: JSON.stringify({ name, email })
     });
   } catch (err) {
     console.error('Waitlist submit error:', err);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '';
   }
 
   // Increment count
